@@ -11,4 +11,19 @@ export default [
 			'textures/environmentMap/nz.png',
 		],
 	},
+	{
+		name: 'forestMerged',
+		type: 'gltfModel',
+		path: 'models/Landscape/forestMerged.glb',
+	},
+	{
+		name: 'foxModel',
+		type: 'gltfModel',
+		path: 'models/Fox/glTF/Fox.gltf',
+	},
+	{
+		name: 'bakedTexture',
+		type: 'texture',
+		path: 'models/Landscape/BAKED.jpg',
+	},
 ]
