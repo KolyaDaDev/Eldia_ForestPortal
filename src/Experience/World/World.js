@@ -2,6 +2,8 @@ import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import FireFlies from './Fireflies.js'
 import Landscape from './Landscape.js'
+import BasicTreeM from './Plants/BasicTreeM'
+import BasicTreeL from './Plants/BasicTreeL'
 
 export default class World {
 	constructor() {
@@ -9,14 +11,13 @@ export default class World {
 		this.scene = this.experience.scene
 		this.resources = this.experience.resources
 		this.fireFlies = new FireFlies()
-		console.log(this.fireFlies)
-		console.log(this.scene)
-
 		// Wait for resources
 		this.resources.on('ready', () => {
 			// Setup
 			this.environment = new Environment()
 			this.landscape = new Landscape()
+			this.BasicTreeM = new BasicTreeM()
+			this.basicTreeL = new BasicTreeL()
 		})
 	}
 
