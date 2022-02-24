@@ -1,8 +1,7 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
-import TestCube from './testCube.js'
+
 import Landscape from './Landscape.js'
-import Fox from './Fox.js'
 
 export default class World {
 	constructor() {
@@ -15,10 +14,11 @@ export default class World {
 		this.resources.on('ready', () => {
 			// Setup
 			this.environment = new Environment()
-			// this.fox = new Fox()
 			this.landscape = new Landscape()
 		})
 	}
 
-	update() {}
+	update() {
+		if (this.landscape) this.landscape.update()
+	}
 }

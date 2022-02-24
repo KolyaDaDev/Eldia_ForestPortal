@@ -51,6 +51,7 @@ export default class Experience {
 			this.update()
 			/// stop the frame counter after each frame
 			this.frameCount.stats.end()
+			this.update()
 		})
 	}
 

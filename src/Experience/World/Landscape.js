@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
-
+import PortalMaterial from './PortalWaves.js'
 export default class Landscape {
 	constructor() {
 		this.experience = new Experience()
@@ -9,12 +9,19 @@ export default class Landscape {
 		this.time = this.experience.time
 		this.debug = this.experience.debug
 
-		// Resource
+		// Resource for landscape
 		this.resource = this.resources.items.forestMerged
 		this.bakedTexture = this.resources.items.bakedTexture
 		this.bakedTexture.flipY = false
 		this.bakedTexture.encoding = THREE.sRGBEncoding
 		this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
+
+		/// resource for portal
+		this.portalMaterial = new PortalMaterial()
+		console.log(this.portalMaterial)
+
+		// Methods
+
 		this.setModel()
 	}
 
@@ -29,5 +36,12 @@ export default class Landscape {
 				child.castShadow = true
 			}
 		})
+
+		/// add portal material to portal mesh of scene
+		this.model.children[0].material = this.portalMaterial.material
+	}
+
+	update() {
+		this.portalMaterial.update()
 	}
 }
