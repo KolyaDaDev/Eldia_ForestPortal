@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
+import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
 
 export default class Camera {
 	constructor() {
@@ -25,8 +26,42 @@ export default class Camera {
 	}
 
 	setControls() {
-		this.controls = new OrbitControls(this.instance, this.canvas)
-		this.controls.enableDamping = true
+		// this.controls = new OrbitControls(this.instance, this.canvas)
+		// this.controls.enableDamping = true
+
+		// properties for controls
+		this.objects = []
+
+		this.raycaster = null
+		this.moveForward = false
+		this.moveBackward = false
+		this.moveLeft = false
+		this.moveRight = false
+		this.canJump = false
+		this.prevTime = performance.now()
+
+		this.velocity = new THREE.Vector3()
+		this.direction = new THREE.Vector3()
+
+		this.controls = new PointerLockControls(this.instance, document.body)
+
+		this.blocker = document.getElementById('blocker')
+		this.instructions = document.getElementById('instructions')
+
+		this.instructions.addEventListener('click', () => {
+			this.controls.lock()
+		})
+
+		this.controls.addEventListener('lock', () => {
+			this.instructions.style.display = 'none'
+			this.blocker.style.display = 'none'
+		})
+
+		this.controls.addEventListener('unlock', () => {
+			this.blocker.style.display = 'block'
+			this.instructions.style.display = ''
+		})
+		this.scene.add(this.controls.getObject())
 	}
 
 	resize() {
@@ -35,6 +70,6 @@ export default class Camera {
 	}
 
 	update() {
-		this.controls.update()
+		// this.controls.update()
 	}
 }

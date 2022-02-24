@@ -30,12 +30,6 @@ export default class Landscape {
 		this.model.children[1].material = this.bakedMaterial
 		this.scene.add(this.model)
 
-		this.model.traverse((child) => {
-			if (child instanceof THREE.Mesh) {
-				child.castShadow = true
-			}
-		})
-
 		/// add portal material to portal mesh of scene
 		this.model.children[0].material = this.portalMaterial.material
 	}
