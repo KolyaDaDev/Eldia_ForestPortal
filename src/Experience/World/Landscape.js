@@ -18,7 +18,6 @@ export default class Landscape {
 
 		/// resource for portal
 		this.portalMaterial = new PortalMaterial()
-		console.log(this.portalMaterial)
 
 		// Methods
 
@@ -27,7 +26,7 @@ export default class Landscape {
 
 	setModel() {
 		this.model = this.resource.scene
-		console.log(this.model)
+
 		this.model.children[1].material = this.bakedMaterial
 		this.scene.add(this.model)
 

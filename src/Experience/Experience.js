@@ -51,13 +51,13 @@ export default class Experience {
 			this.update()
 			/// stop the frame counter after each frame
 			this.frameCount.stats.end()
-			this.update()
 		})
 	}
 
 	resize() {
 		this.camera.resize()
 		this.renderer.resize()
+		this.world.resize()
 	}
 
 	update() {
