@@ -32,7 +32,12 @@ export default class Camera {
 		// properties for controls
 		this.objects = []
 
-		this.raycaster = null
+		this.raycaster = new THREE.Raycaster(
+			new THREE.Vector3(),
+			new THREE.Vector3(0, -1, 0),
+			0,
+			10
+		)
 		this.moveForward = false
 		this.moveBackward = false
 		this.moveLeft = false
@@ -62,6 +67,63 @@ export default class Camera {
 			this.instructions.style.display = ''
 		})
 		this.scene.add(this.controls.getObject())
+
+		this.onKeyDown = (e) => {
+			switch (e.code) {
+				case 'ArrowUp':
+				case 'KeyW':
+					this.moveForward = true
+					console.log(this.controls.getObject().position)
+					break
+
+				case 'ArrowLeft':
+				case 'KeyA':
+					this.moveLeft = true
+					break
+
+				case 'ArrowDown':
+				case 'KeyS':
+					this.moveBackward = true
+					break
+
+				case 'ArrowRight':
+				case 'KeyD':
+					this.moveRight = true
+					break
+
+				case 'Space':
+					if (this.canJump === true) this.velocity.y += 10
+					this.canJump = false
+					break
+			}
+		}
+
+		this.onKeyUp = (e) => {
+			switch (e.code) {
+				case 'ArrowUp':
+				case 'KeyW':
+					this.moveForward = false
+					break
+
+				case 'ArrowLeft':
+				case 'KeyA':
+					this.moveLeft = false
+					break
+
+				case 'ArrowDown':
+				case 'KeyS':
+					this.moveBackward = false
+					break
+
+				case 'ArrowRight':
+				case 'KeyD':
+					this.moveRight = false
+					break
+			}
+		}
+
+		document.addEventListener('keyup', this.onKeyUp)
+		document.addEventListener('keydown', this.onKeyDown)
 	}
 
 	resize() {
@@ -70,6 +132,50 @@ export default class Camera {
 	}
 
 	update() {
-		// this.controls.update()
+		this.time = performance.now()
+		if (this.controls.isLocked === true) {
+			this.raycaster.ray.origin.copy(this.controls.getObject().position)
+			this.raycaster.ray.origin.y -= 10
+
+			this.intersections = this.raycaster.intersectObjects(this.objects, false)
+
+			this.onObject = this.intersections.length > 0
+
+			// is the difference between timestamps, just as with delta time used originally. Averaging around 0.016.
+			this.delta = (this.time - this.prevTime) / 1000
+
+			this.velocity.x -= this.velocity.x * 5 * this.delta
+			this.velocity.z -= this.velocity.z * 5 * this.delta
+
+			// mass controls the speed at which you fall and rise on jump
+			this.velocity.y -= 2 * 15 * this.delta // 100.0 = mass
+
+			this.direction.z = Number(this.moveForward) - Number(this.moveBackward)
+			this.direction.x = Number(this.moveRight) - Number(this.moveLeft)
+			this.direction.normalize() // this ensures consistent movements in all directions
+
+			if (this.moveForward || this.moveBackward)
+				this.velocity.z -= this.direction.z * 50.0 * this.delta
+			if (this.moveLeft || this.moveRight)
+				this.velocity.x -= this.direction.x * 50.0 * this.delta
+
+			if (this.onObject === true) {
+				this.velocity.y = Math.max(0, this.velocity.y)
+				this.canJump = true
+			}
+
+			this.controls.moveRight(-this.velocity.x * this.delta)
+			this.controls.moveForward(-this.velocity.z * this.delta)
+
+			this.controls.getObject().position.y += this.velocity.y * this.delta // new behavior
+
+			if (this.controls.getObject().position.y < 1) {
+				this.velocity.y = 0
+				this.controls.getObject().position.y = 1
+
+				this.canJump = true
+			}
+		}
+		this.prevTime = this.time
 	}
 }
