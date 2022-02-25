@@ -4,6 +4,7 @@ import FireFlies from './Fireflies.js'
 import Landscape from './Landscape.js'
 import BasicTreeM from './Plants/BasicTreeM'
 import BasicTreeL from './Plants/BasicTreeL'
+import Greyfield from './Greyfield.js'
 
 export default class World {
 	constructor() {
@@ -15,9 +16,10 @@ export default class World {
 		this.resources.on('ready', () => {
 			// Setup
 			this.environment = new Environment()
-			this.landscape = new Landscape()
+			// this.landscape = new Landscape()
 			this.BasicTreeM = new BasicTreeM()
 			this.basicTreeL = new BasicTreeL()
+			this.greyfield = new Greyfield()
 		})
 	}
 

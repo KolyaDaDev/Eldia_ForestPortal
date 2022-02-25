@@ -7,7 +7,6 @@ export default class Landscape {
 		this.scene = this.experience.scene
 		this.resources = this.experience.resources
 		this.time = this.experience.time
-		this.debug = this.experience.debug
 
 		// Resource for landscape
 		this.resource = this.resources.items.forestMerged
@@ -28,6 +27,7 @@ export default class Landscape {
 		this.model = this.resource.scene
 
 		this.model.children[1].material = this.bakedMaterial
+
 		this.scene.add(this.model)
 
 		/// add portal material to portal mesh of scene

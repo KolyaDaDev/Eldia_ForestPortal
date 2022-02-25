@@ -10,7 +10,7 @@ export default class Environment {
 		// Debug
 
 		this.setSunLight()
-		this.setAmbientLight()
+		// this.setAmbientLight()
 		this.setEnvironmentMap()
 	}
 
@@ -55,10 +55,11 @@ export default class Environment {
 		// }
 	}
 
-	setAmbientLight() {
-		this.ambientLight = new THREE.AmbientLight(0xff00ff, 0.8)
-		this.scene.add(this.ambientLight)
-	}
+	// setAmbientLight() {
+	// 	this.ambientLight = new THREE.AmbientLight(0xff00ff, 0.8)
+	// 	this.scene.add(this.ambientLight)
+	// }
+
 	setEnvironmentMap() {
 		this.environmentMap = {}
 		this.environmentMap.intensity = 0.4

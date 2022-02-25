@@ -22,6 +22,11 @@ export default [
 		path: 'models/Landscape/BAKED.jpg',
 	},
 	{
+		name: 'Greyfield',
+		type: 'gltfModel',
+		path: 'models/Greyfield/forest3.1.glb',
+	},
+	{
 		name: 'BasicTreeM',
 		type: 'gltfModel',
 		path: 'models/Tree/glTF-Binary/tree.glb',
