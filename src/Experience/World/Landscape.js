@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
-import PortalMaterial from './PortalWaves.js'
+import PortalMaterial from './shaderMaterials/PortalWaves.js'
 export default class Landscape {
 	constructor() {
 		this.experience = new Experience()

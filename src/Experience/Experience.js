@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-// import Debug from './Utils/Debug.js'
+import Debug from './Utils/Debug.js'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
 import Camera from './Camera.js'
@@ -29,7 +29,7 @@ export default class Experience {
 		this.canvas = _canvas
 
 		// Setup
-		// this.debug = new Debug()
+		this.debug = new Debug()
 		this.frameCount = new FrameCount()
 		this.sizes = new Sizes()
 		this.time = new Time()

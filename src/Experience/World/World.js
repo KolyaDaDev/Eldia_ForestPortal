@@ -1,6 +1,6 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
-import FireFlies from './Fireflies.js'
+import FireFlies from './shaderMaterials/Fireflies.js'
 import Landscape from './Landscape.js'
 import BasicTreeM from './Plants/BasicTreeM'
 import BasicTreeL from './Plants/BasicTreeL'
@@ -26,6 +26,7 @@ export default class World {
 	update() {
 		/// we add (if (this.landscape)) because absence will cause update to call this.landscape.update() before the resources have loaded and before instantiation
 		if (this.landscape) this.landscape.update()
+		if (this.greyfield) this.greyfield.update()
 
 		this.fireFlies.update()
 	}

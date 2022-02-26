@@ -19,16 +19,13 @@ export default class Camera {
 			35,
 			this.sizes.width / this.sizes.height,
 			0.1,
-			100
+			1500
 		)
-		this.instance.position.set(6, 4, 8)
+		this.instance.position.set(-144.29486354159414, 1, 150.54402012435241)
 		this.scene.add(this.instance)
 	}
 
 	setControls() {
-		// this.controls = new OrbitControls(this.instance, this.canvas)
-		// this.controls.enableDamping = true
-
 		// properties for controls
 		this.objects = []
 
