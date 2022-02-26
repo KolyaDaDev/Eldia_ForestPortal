@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
-
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
 
 export default class Camera {
@@ -131,12 +130,12 @@ export default class Camera {
 	update() {
 		this.time = performance.now()
 		if (this.controls.isLocked === true) {
-			this.raycaster.ray.origin.copy(this.controls.getObject().position)
-			this.raycaster.ray.origin.y -= 10
+			// this.raycaster.ray.origin.copy(this.controls.getObject().position)
+			// this.raycaster.ray.origin.y -= 10
 
-			this.intersections = this.raycaster.intersectObjects(this.objects, false)
+			// this.intersections = this.raycaster.intersectObjects(this.objects, false)
 
-			this.onObject = this.intersections.length > 0
+			// this.onObject = this.intersections.length > 0
 
 			// is the difference between timestamps, just as with delta time used originally. Averaging around 0.016.
 			this.delta = (this.time - this.prevTime) / 1000
@@ -156,10 +155,10 @@ export default class Camera {
 			if (this.moveLeft || this.moveRight)
 				this.velocity.x -= this.direction.x * 500 * this.delta
 
-			if (this.onObject === true) {
-				this.velocity.y = Math.max(0, this.velocity.y)
-				this.canJump = true
-			}
+			// if (this.onObject === true) {
+			// 	this.velocity.y = Math.max(0, this.velocity.y)
+			// 	this.canJump = true
+			// }
 
 			this.controls.moveRight(-this.velocity.x * this.delta)
 			this.controls.moveForward(-this.velocity.z * this.delta)

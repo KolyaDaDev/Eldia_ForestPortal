@@ -3,7 +3,7 @@ import Experience from '../Experience'
 import PortalMaterial from './shaderMaterials/PortalWaves.js'
 import LakeMaterial from './shaderMaterials/LakeMaterial.js'
 import SunMaterial from './shaderMaterials/SunMaterial.js'
-
+import Raycaster from '../Utils/Raycaster'
 export default class Greyfield {
 	constructor() {
 		this.experience = new Experience()
@@ -18,10 +18,13 @@ export default class Greyfield {
 		// this.bakedTexture.encoding = THREE.sRGBEncoding
 		// this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
 
-		/// resource for portal
+		/// shaderMaterials
 		this.portalMaterial = new PortalMaterial()
 		this.lakeMaterial = new LakeMaterial()
 		this.sunMaterial = new SunMaterial()
+
+		/// raycaster
+		this.raycaster = new Raycaster()
 
 		// Methods
 		this.setModel()
@@ -61,5 +64,6 @@ export default class Greyfield {
 		this.portalMaterial.update()
 		this.lakeMaterial.update()
 		this.sunMaterial.update()
+		this.raycaster.update()
 	}
 }
