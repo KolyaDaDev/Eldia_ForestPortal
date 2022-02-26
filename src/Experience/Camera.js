@@ -152,9 +152,9 @@ export default class Camera {
 			this.direction.normalize() // this ensures consistent movements in all directions
 
 			if (this.moveForward || this.moveBackward)
-				this.velocity.z -= this.direction.z * 50.0 * this.delta
+				this.velocity.z -= this.direction.z * 500 * this.delta
 			if (this.moveLeft || this.moveRight)
-				this.velocity.x -= this.direction.x * 50.0 * this.delta
+				this.velocity.x -= this.direction.x * 500 * this.delta
 
 			if (this.onObject === true) {
 				this.velocity.y = Math.max(0, this.velocity.y)
