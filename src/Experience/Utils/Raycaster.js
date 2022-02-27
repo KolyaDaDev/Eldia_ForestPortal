@@ -18,6 +18,7 @@ export default class Raycaster extends EventEmitter {
 
 	createRaycaster() {
 		this.raycaster = new THREE.Raycaster()
+		console.log(this.camera.instance)
 		this.rayOrigin = new THREE.Vector3(-144.29486354159414, 1, 150.54402012435241)
 		this.rayDirection = new THREE.Vector3(10, 0, 0)
 		this.rayDirection.normalize()
@@ -34,12 +35,12 @@ export default class Raycaster extends EventEmitter {
 	}
 
 	update() {
-		this.rayOrigin = this.camera.instance
-		this.raycaster.setFromCamera(this.mouse, this.rayOrigin)
-		this.intersectObjects = this.raycaster.intersectObjects(
-			this.resource.scene.children
-		)
-		if (this.intersectObjects.length) {
-		}
+		// this.rayOrigin = this.camera.instance
+		// this.raycaster.setFromCamera(this.mouse, this.rayOrigin)
+		// this.intersectObjects = this.raycaster.intersectObjects(
+		// 	this.resource.scene.children
+		// )
+		// if (this.intersectObjects.length) {
+		// }
 	}
 }
