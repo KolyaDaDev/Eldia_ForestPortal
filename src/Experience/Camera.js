@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
-
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
+import Raycaster from './Utils/Raycaster.js'
 
 export default class Camera {
 	constructor() {
@@ -9,9 +9,18 @@ export default class Camera {
 		this.sizes = this.experience.sizes
 		this.scene = this.experience.scene
 		this.canvas = this.experience.canvas
+		//// added for passing to ray
+		this.resources = this.experience.resources
+		this.resource = this.resources.items.Greyfield
+		////
 
 		this.setInstance()
 		this.setControls()
+
+		this.raycaster = new Raycaster(
+			this.resource,
+			this.controls.getObject().position
+		)
 	}
 
 	setInstance() {

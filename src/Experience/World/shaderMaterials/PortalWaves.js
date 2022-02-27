@@ -15,6 +15,7 @@ export default class PortalMaterial {
 			},
 			vertexShader: portalVertex,
 			fragmentShader: portalFragment,
+			side: THREE.DoubleSide,
 		})
 	}
 
