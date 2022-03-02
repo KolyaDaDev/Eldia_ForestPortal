@@ -212,6 +212,5 @@ export default class Camera {
 		) {
 			this.teleportFrom()
 		}
-		// console.log(Math.floor(this.controls.getObject().position.x))
 	}
 }
