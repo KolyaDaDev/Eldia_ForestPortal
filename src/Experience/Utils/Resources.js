@@ -23,7 +23,7 @@ export default class Resources extends EventEmitter {
 		this.loaders.dracoLoader.setDecoderPath('/draco/')
 
 		this.loaders.gltfLoader = new GLTFLoader()
-		console.log(this.loaders.gltfLoader)
+
 		this.loaders.gltfLoader.dracoLoader = this.loaders.dracoLoader
 
 		this.loaders.textureLoader = new THREE.TextureLoader()

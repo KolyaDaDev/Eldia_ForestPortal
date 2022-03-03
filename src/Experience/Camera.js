@@ -1,7 +1,6 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
-import Raycaster from './Utils/Raycaster.js'
 
 export default class Camera {
 	constructor() {
@@ -10,17 +9,13 @@ export default class Camera {
 		this.scene = this.experience.scene
 		this.canvas = this.experience.canvas
 		//// added for passing to ray
-		this.resources = this.experience.resources
-		this.resource = this.resources.items.Greyfield
-		////
+		this.resource = this.experience.resources
 
 		this.setInstance()
 		this.setControls()
+		// this.setRaycaster()
 
-		this.raycaster = new Raycaster(
-			this.resource,
-			this.controls.getObject().position
-		)
+		// this.raycaster.update()
 	}
 
 	setInstance() {
@@ -37,14 +32,14 @@ export default class Camera {
 
 	setControls() {
 		// properties for controls
-		// this.objects = []
+		this.objects = []
 
-		// this.raycaster = new THREE.Raycaster(
-		// 	new THREE.Vector3(),
-		// 	new THREE.Vector3(0, -1, 0),
-		// 	0,
-		// 	10
-		// )
+		this.raycaster = new THREE.Raycaster(
+			new THREE.Vector3(),
+			new THREE.Vector3(0, -10, 0),
+			0,
+			10
+		)
 		this.moveForward = false
 		this.moveBackward = false
 		this.moveLeft = false
@@ -152,12 +147,12 @@ export default class Camera {
 	update() {
 		this.time = performance.now()
 		if (this.controls.isLocked === true) {
-			// this.raycaster.ray.origin.copy(this.controls.getObject().position)
+			this.raycaster.ray.origin.copy(this.controls.getObject().position)
 			// this.raycaster.ray.origin.y -= 10
 
-			// this.intersections = this.raycaster.intersectObjects(this.objects, false)
+			this.intersections = this.raycaster.intersectObjects(this.objects, false)
 
-			// this.onObject = this.intersections.length > 0
+			this.onObject = this.intersections.length > 0
 
 			// is the difference between timestamps, just as with delta time used originally. Averaging around 0.016.
 			this.delta = (this.time - this.prevTime) / 1000
