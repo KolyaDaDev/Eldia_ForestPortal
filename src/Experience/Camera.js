@@ -26,7 +26,7 @@ export default class Camera {
 			1500
 		)
 		// sets player start
-		this.instance.position.set(-144.29486354159414, 1, 150.54402012435241)
+		this.instance.position.set(0, 1, 0)
 		this.scene.add(this.instance)
 	}
 

@@ -16,15 +16,10 @@ export default [
 		type: 'gltfModel',
 		path: 'models/Landscape/forestMerged.glb',
 	},
-	// {
-	// 	name: 'bakedTexture',
-	// 	type: 'texture',
-	// 	path: 'models/Landscape/BAKED.jpg',
-	// },
 	{
-		name: 'Greyfield',
-		type: 'gltfModel',
-		path: 'models/Greyfield/forest3.2_noTrees.glb',
+		name: 'bakedTexture',
+		type: 'texture',
+		path: 'models/Landscape/BAKED.jpg',
 	},
 	{
 		name: 'BasicTreeM',
