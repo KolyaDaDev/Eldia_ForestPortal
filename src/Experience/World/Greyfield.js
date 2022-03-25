@@ -12,16 +12,16 @@ export default class Greyfield {
 		this.time = this.experience.time
 
 		// Resource for landscape
-		this.resource = this.resources.items.forestMerged
-		this.bakedTexture = this.resources.items.bakedTexture
-		this.bakedTexture.flipY = false
-		this.bakedTexture.encoding = THREE.sRGBEncoding
-		this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
+		this.resource = this.resources.items.forestOfNiko
+		// this.bakedTexture = this.resources.items.bakedTexture
+		// this.bakedTexture.flipY = false
+		// this.bakedTexture.encoding = THREE.sRGBEncoding
+		// this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
 
 		/// shaderMaterials
 		this.portalMaterial = new PortalMaterial()
-		// this.lakeMaterial = new LakeMaterial()
-		// this.sunMaterial = new SunMaterial()
+		this.lakeMaterial = new LakeMaterial()
+		this.sunMaterial = new SunMaterial()
 
 		/// raycaster
 
@@ -34,12 +34,12 @@ export default class Greyfield {
 		this.model.scale.set(1, 1, 1)
 		this.model.position.y = 0
 		console.log(this.model)
-		this.model.children[1].material = this.bakedMaterial
+		// this.model.children[1].material = this.bakedMaterial
 		this.scene.add(this.model)
 
 		// /// add portal material to portals of scene
 		this.portalMeshEntrance = this.model.children.find(
-			(child) => child.name === 'Circle'
+			(child) => child.name === 'portalCircle'
 		)
 		this.portalMeshEntrance.material = this.portalMaterial.material
 
@@ -49,20 +49,20 @@ export default class Greyfield {
 		// this.portalMeshExit.material = this.portalMaterial.material
 
 		// /// Add material to lake
-		// this.lakeMesh = this.model.children.find(
-		// 	(child) => child.name === 'Landscape_plane001'
-		// )
-		// this.lakeMesh.material = this.lakeMaterial.material
+		this.lakeMesh = this.model.children.find((child) => child.name === 'sea')
+		this.lakeMesh.material = this.lakeMaterial.material
 
 		// /// Add material to sun
-		// this.sunMesh = this.model.children.find((child) => child.name === 'sun')
-		// this.sunMesh.material = this.sunMaterial.material
+		this.sunMesh = this.model.children.find(
+			(child) => child.name === 'firepitPlane001'
+		)
+		this.sunMesh.material = this.sunMaterial.material
 	}
 
 	update() {
-		// this.portalMaterial.update()
-		// this.lakeMaterial.update()
-		// this.sunMaterial.update()
+		this.portalMaterial.update()
+		this.lakeMaterial.update()
+		this.sunMaterial.update()
 		// this.raycaster.update()
 	}
 }

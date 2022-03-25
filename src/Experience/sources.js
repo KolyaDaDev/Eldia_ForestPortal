@@ -11,24 +11,29 @@ export default [
 			'textures/environmentMap/nz.png',
 		],
 	},
+	// {
+	// 	name: 'forestMerged',
+	// 	type: 'gltfModel',
+	// 	path: 'models/Landscape/forestMerged.glb',
+	// },
+	// {
+	// 	name: 'bakedTexture',
+	// 	type: 'texture',
+	// 	path: 'models/Landscape/BAKED.jpg',
+	// },
+	// {
+	// 	name: 'BasicTreeM',
+	// 	type: 'gltfModel',
+	// 	path: 'models/Tree/glTF-Binary/tree.glb',
+	// },
+	// {
+	// 	name: 'basicTreeL',
+	// 	type: 'gltfModel',
+	// 	path: 'models/Tree2/glTF-Binary/tree_2_fini.glb',
+	// },
 	{
-		name: 'forestMerged',
+		name: 'forestOfNiko',
 		type: 'gltfModel',
-		path: 'models/Landscape/forestMerged.glb',
-	},
-	{
-		name: 'bakedTexture',
-		type: 'texture',
-		path: 'models/Landscape/BAKED.jpg',
-	},
-	{
-		name: 'BasicTreeM',
-		type: 'gltfModel',
-		path: 'models/Tree/glTF-Binary/tree.glb',
-	},
-	{
-		name: 'basicTreeL',
-		type: 'gltfModel',
-		path: 'models/Tree2/glTF-Binary/tree_2_fini.glb',
+		path: 'models/nikoForest/forestOfNiko.glb',
 	},
 ]

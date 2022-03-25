@@ -8,8 +8,8 @@ export default class SunMaterial {
 		this.experience = new Experience()
 		this.time = this.experience.time
 		this.debugObject = {
-			depthColor: '#611e01',
-			surfaceColor: '#d0d8e6',
+			depthColor: '#b01802',
+			surfaceColor: '#e3fc34',
 		}
 		this.material = new THREE.ShaderMaterial({
 			vertexShader: SunVertex,
@@ -17,19 +17,19 @@ export default class SunMaterial {
 			uniforms: {
 				uTime: { value: 0 },
 
-				uBigWavesElevation: { value: 0 },
-				uBigWavesFrequency: { value: new THREE.Vector2(10, 9.403) },
-				uBigWavesSpeed: { value: 0.656 },
+				uBigWavesElevation: { value: 0.016 },
+				uBigWavesFrequency: { value: new THREE.Vector2(10, 10) },
+				uBigWavesSpeed: { value: 1.306 },
 
-				uSmallWavesElevation: { value: 0.119 },
-				uSmallWavesFrequency: { value: 4.531 },
-				uSmallWavesSpeed: { value: 0.301 },
-				uSmallIterations: { value: 10 },
+				uSmallWavesElevation: { value: 0.174 },
+				uSmallWavesFrequency: { value: 25.761 },
+				uSmallWavesSpeed: { value: 0.468 },
+				uSmallIterations: { value: 2 },
 
 				uDepthColor: { value: new THREE.Color(this.debugObject.depthColor) },
 				uSurfaceColor: { value: new THREE.Color(this.debugObject.surfaceColor) },
-				uColorOffset: { value: 0.065 },
-				uColorMultiplier: { value: 5 },
+				uColorOffset: { value: 0.209 },
+				uColorMultiplier: { value: 2.531 },
 			},
 		})
 
