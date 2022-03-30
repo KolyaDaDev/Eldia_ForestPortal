@@ -19,8 +19,13 @@ export default [
 	// {
 	// 	name: 'bakedTexture',
 	// 	type: 'texture',
-	// 	path: 'models/Landscape/BAKED.jpg',
+	// 	path: 'models/nikoForest/baked2.jpg',
 	// },
+	{
+		name: 'taxleTexture',
+		type: 'texture',
+		path: 'textures/taxle/taxle.jpg',
+	},
 	// {
 	// 	name: 'BasicTreeM',
 	// 	type: 'gltfModel',

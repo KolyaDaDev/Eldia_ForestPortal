@@ -23,7 +23,9 @@ export default class Greyfield {
 		this.lakeMaterial = new LakeMaterial()
 		this.sunMaterial = new SunMaterial()
 
-		/// raycaster
+		// project textures
+		this.taxleTexture = this.resources.items.taxleTexture
+		this.taxleMaterial = new THREE.MeshBasicMaterial({ map: this.taxleTexture })
 
 		// Methods
 		this.setModel()
@@ -34,7 +36,11 @@ export default class Greyfield {
 		this.model.scale.set(1, 1, 1)
 		this.model.position.y = 0
 		console.log(this.model)
-		// this.model.children[1].material = this.bakedMaterial
+		// this.model.children[1].material = this.testMaterial
+		// this.model.traverse((child) => {
+		// 	child.material = this.bakedMaterial
+		// })
+
 		this.scene.add(this.model)
 
 		// /// add portal material to portals of scene
@@ -51,6 +57,12 @@ export default class Greyfield {
 		// /// Add material to lake
 		this.lakeMesh = this.model.children.find((child) => child.name === 'sea')
 		this.lakeMesh.material = this.lakeMaterial.material
+
+		// /// Add material to lake
+		this.taxleMesh = this.model.children.find(
+			(child) => child.name === 'taxlePlane'
+		)
+		this.taxleMesh.material = this.taxleMaterial
 
 		// /// Add material to sun
 		this.sunMesh = this.model.children.find(
