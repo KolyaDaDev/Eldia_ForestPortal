@@ -3,6 +3,7 @@ import Experience from '../Experience'
 import PortalMaterial from './shaderMaterials/PortalWaves.js'
 import LakeMaterial from './shaderMaterials/LakeMaterial.js'
 import SunMaterial from './shaderMaterials/SunMaterial.js'
+import TaxlePlane from './ProjectPlane.js'
 
 export default class Greyfield {
 	constructor() {
@@ -13,10 +14,10 @@ export default class Greyfield {
 
 		// Resource for landscape
 		this.resource = this.resources.items.forestOfNiko
-		// this.bakedTexture = this.resources.items.bakedTexture
-		// this.bakedTexture.flipY = false
-		// this.bakedTexture.encoding = THREE.sRGBEncoding
-		// this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
+		this.bakedTexture = this.resources.items.bakedTexture
+		this.bakedTexture.flipY = false
+		this.bakedTexture.encoding = THREE.sRGBEncoding
+		this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
 
 		/// shaderMaterials
 		this.portalMaterial = new PortalMaterial()
@@ -25,7 +26,9 @@ export default class Greyfield {
 
 		// project textures
 		this.taxleTexture = this.resources.items.taxleTexture
-		this.taxleMaterial = new THREE.MeshBasicMaterial({ map: this.taxleTexture })
+
+		// project planes
+		this.taxlePlane = new TaxlePlane(this.taxleTexture, 'taxle')
 
 		// Methods
 		this.setModel()
@@ -36,10 +39,10 @@ export default class Greyfield {
 		this.model.scale.set(1, 1, 1)
 		this.model.position.y = 0
 		console.log(this.model)
-		// this.model.children[1].material = this.testMaterial
-		// this.model.traverse((child) => {
-		// 	child.material = this.bakedMaterial
-		// })
+
+		this.model.traverse((child) => {
+			child.material = this.bakedMaterial
+		})
 
 		this.scene.add(this.model)
 
@@ -47,6 +50,7 @@ export default class Greyfield {
 		this.portalMeshEntrance = this.model.children.find(
 			(child) => child.name === 'portalCircle'
 		)
+
 		this.portalMeshEntrance.material = this.portalMaterial.material
 
 		// this.portalMeshExit = this.model.children.find(
@@ -58,11 +62,7 @@ export default class Greyfield {
 		this.lakeMesh = this.model.children.find((child) => child.name === 'sea')
 		this.lakeMesh.material = this.lakeMaterial.material
 
-		// /// Add material to lake
-		this.taxleMesh = this.model.children.find(
-			(child) => child.name === 'taxlePlane'
-		)
-		this.taxleMesh.material = this.taxleMaterial
+		// /// Add material to taxle plane
 
 		// /// Add material to sun
 		this.sunMesh = this.model.children.find(

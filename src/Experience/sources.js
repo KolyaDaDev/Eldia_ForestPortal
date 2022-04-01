@@ -16,11 +16,11 @@ export default [
 	// 	type: 'gltfModel',
 	// 	path: 'models/Landscape/forestMerged.glb',
 	// },
-	// {
-	// 	name: 'bakedTexture',
-	// 	type: 'texture',
-	// 	path: 'models/nikoForest/baked2.jpg',
-	// },
+	{
+		name: 'bakedTexture',
+		type: 'texture',
+		path: 'models/nikoForest/baked.jpg',
+	},
 	{
 		name: 'taxleTexture',
 		type: 'texture',
@@ -39,6 +39,6 @@ export default [
 	{
 		name: 'forestOfNiko',
 		type: 'gltfModel',
-		path: 'models/nikoForest/forestOfNiko.glb',
+		path: 'models/nikoForest/forestOfNiko5.glb',
 	},
 ]
