@@ -1,11 +1,13 @@
 import * as THREE from 'three'
 import Experience from '../Experience'
-
+import objectPositions from './objectPositions'
 export default class ProjectPLane {
-	constructor(texture, debugName) {
+	constructor(texture, debugName, planeName) {
 		this.experience = new Experience()
 		this.scene = this.experience.scene
 		this.texture = texture
+		this.planeName = planeName
+		this.objectPositions = objectPositions
 
 		// instantiate plane
 		this.setPlane()
@@ -25,13 +27,19 @@ export default class ProjectPLane {
 			side: THREE.DoubleSide,
 		})
 		this.plane = new THREE.Mesh(this.geometry, this.material)
+		this.plane.name = this.planeName
+		console.log(this.plane.name)
 
 		this.scene.add(this.plane)
-		this.plane.position.x = -0.8
-		this.plane.position.y = 2
-		this.plane.position.z = 6.3
-		this.plane.rotation.y = 3
-		console.log('plane added')
+
+		for (const planes of this.objectPositions) {
+			if (planes.name == this.planeName) {
+				this.plane.position.x = planes.x
+				this.plane.position.y = planes.y
+				this.plane.position.z = planes.z
+				this.plane.rotation.y = planes.rotation
+			}
+		}
 	}
 
 	setDebug() {

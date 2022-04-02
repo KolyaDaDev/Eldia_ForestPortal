@@ -3,7 +3,7 @@ import Experience from '../Experience'
 import PortalMaterial from './shaderMaterials/PortalWaves.js'
 import LakeMaterial from './shaderMaterials/LakeMaterial.js'
 import SunMaterial from './shaderMaterials/SunMaterial.js'
-import TaxlePlane from './ProjectPlane.js'
+import ProjectPlane from './ProjectPlane.js'
 
 export default class Greyfield {
 	constructor() {
@@ -25,10 +25,12 @@ export default class Greyfield {
 		this.sunMaterial = new SunMaterial()
 
 		// project textures
+
 		this.taxleTexture = this.resources.items.taxleTexture
 
 		// project planes
-		this.taxlePlane = new TaxlePlane(this.taxleTexture, 'taxle')
+		this.taxlePlane = new ProjectPlane(this.taxleTexture, 'taxle', 'taxlePlane')
+		this.spacePlane = new ProjectPlane(this.taxleTexture, 'space', 'spacePlane')
 
 		// Methods
 		this.setModel()
@@ -38,7 +40,6 @@ export default class Greyfield {
 		this.model = this.resource.scene
 		this.model.scale.set(1, 1, 1)
 		this.model.position.y = 0
-		console.log(this.model)
 
 		this.model.traverse((child) => {
 			child.material = this.bakedMaterial
@@ -50,6 +51,7 @@ export default class Greyfield {
 		this.portalMeshEntrance = this.model.children.find(
 			(child) => child.name === 'portalCircle'
 		)
+		console.log(this.portalMeshEntrance)
 
 		this.portalMeshEntrance.material = this.portalMaterial.material
 
