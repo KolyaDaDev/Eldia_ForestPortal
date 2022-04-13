@@ -26,6 +26,11 @@ export default [
 		type: 'texture',
 		path: 'textures/taxle/taxle.jpg',
 	},
+	{
+		name: 'spaceTexture',
+		type: 'texture',
+		path: 'textures/spaceProject/nikodevCover1.jpg',
+	},
 	// {
 	// 	name: 'BasicTreeM',
 	// 	type: 'gltfModel',

@@ -27,13 +27,19 @@ export default class Greyfield {
 		// project textures
 
 		this.taxleTexture = this.resources.items.taxleTexture
+		this.spaceTexture = this.resources.items.spaceTexture
 
 		// project planes
-		this.taxlePlane = new ProjectPlane(this.taxleTexture, 'taxle', 'taxlePlane')
-		this.spacePlane = new ProjectPlane(this.taxleTexture, 'space', 'spacePlane')
 
 		// Methods
 		this.setModel()
+
+		//debug
+		this.debug = this.experience.debug
+		if (this.debug.active) {
+			this.debugFolder = this.debug.ui.addFolder('planes')
+		}
+		this.setDebug()
 	}
 
 	setModel() {
@@ -51,26 +57,42 @@ export default class Greyfield {
 		this.portalMeshEntrance = this.model.children.find(
 			(child) => child.name === 'portalCircle'
 		)
-		console.log(this.portalMeshEntrance)
 
-		this.portalMeshEntrance.material = this.portalMaterial.material
+		this.portalMaterialProject = new THREE.MeshBasicMaterial({
+			map: this.spaceTexture,
+			side: THREE.DoubleSide,
+		})
 
-		// this.portalMeshExit = this.model.children.find(
-		// 	(child) => child.name === 'Circle001'
-		// )
-		// this.portalMeshExit.material = this.portalMaterial.material
+		this.portalMeshEntrance.material = this.portalMaterialProject
+		this.portalMeshEntrance.rotation.y = 3.15
+		this.portalMeshEntrance.rotation.x = 1.4
 
 		// /// Add material to lake
 		this.lakeMesh = this.model.children.find((child) => child.name === 'sea')
 		this.lakeMesh.material = this.lakeMaterial.material
-
-		// /// Add material to taxle plane
 
 		// /// Add material to sun
 		this.sunMesh = this.model.children.find(
 			(child) => child.name === 'firepitPlane001'
 		)
 		this.sunMesh.material = this.sunMaterial.material
+	}
+
+	setDebug() {
+		if (this.debug.active) {
+			this.debugFolder
+				.add(this.portalMeshEntrance.rotation, 'x')
+				.min(0)
+				.max(10)
+				.step(0.1)
+				.name('x')
+			this.debugFolder
+				.add(this.portalMeshEntrance.rotation, 'y')
+				.min(0)
+				.max(10)
+				.step(0.1)
+				.name('y')
+		}
 	}
 
 	update() {
