@@ -1,7 +1,6 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import FireFlies from './shaderMaterials/Fireflies.js'
-import Landscape from './Landscape.js'
 import Greyfield from './Greyfield.js'
 
 export default class World {

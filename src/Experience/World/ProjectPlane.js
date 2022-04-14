@@ -17,11 +17,15 @@ export default class ProjectPLane {
 		if (this.debug.active) {
 			this.debugFolder = this.debug.ui.addFolder(debugName)
 		}
+
+		this.debugParams = {
+			scale: 2,
+		}
 		this.setDebug()
 	}
 
 	setPlane() {
-		this.geometry = new THREE.PlaneGeometry(3, 2)
+		this.geometry = new THREE.CircleGeometry(2, 20)
 		this.material = new THREE.MeshBasicMaterial({
 			map: this.texture,
 			side: THREE.DoubleSide,
@@ -29,6 +33,7 @@ export default class ProjectPLane {
 		this.plane = new THREE.Mesh(this.geometry, this.material)
 		this.plane.name = this.planeName
 		console.log(this.plane.name)
+		this.plane.scale.set(0.6, 0.6, 0.6)
 
 		this.scene.add(this.plane)
 
@@ -64,8 +69,8 @@ export default class ProjectPLane {
 				.name('pos x ')
 			this.debugFolder
 				.add(this.plane.position, 'z')
-				.min(-10)
-				.max(10)
+				.min(-50)
+				.max(50)
 				.step(0.1)
 				.name('pos z')
 		}

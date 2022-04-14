@@ -4,7 +4,6 @@ import PortalMaterial from './shaderMaterials/PortalWaves.js'
 import LakeMaterial from './shaderMaterials/LakeMaterial.js'
 import SunMaterial from './shaderMaterials/SunMaterial.js'
 import ProjectPlane from './ProjectPlane.js'
-
 export default class Greyfield {
 	constructor() {
 		this.experience = new Experience()
@@ -30,20 +29,37 @@ export default class Greyfield {
 		this.spaceTexture = this.resources.items.spaceTexture
 
 		// project planes
+		this.spacePlane = new ProjectPlane(
+			this.spaceTexture,
+			'spacePortal',
+			'spacePlane'
+		)
+		this.taxlePlane = new ProjectPlane(
+			this.taxleTexture,
+			'taxlePlane',
+			'taxlePlane'
+		)
+		this.eldiaPlane = new ProjectPlane(
+			this.taxleTexture,
+			'eldiaPlane',
+			'eldiaPlane'
+		)
+		this.skillsPlane = new ProjectPlane(
+			this.taxleTexture,
+			'skillsPlane',
+			'skillsPlane'
+		)
+		this.fullPlane = new ProjectPlane(this.taxleTexture, 'fullPlane', 'fullPlane')
 
 		// Methods
 		this.setModel()
 
 		//debug
-		this.debug = this.experience.debug
-		if (this.debug.active) {
-			this.debugFolder = this.debug.ui.addFolder('planes')
-		}
-		this.setDebug()
 	}
 
 	setModel() {
 		this.model = this.resource.scene
+		console.log(this.model)
 		this.model.scale.set(1, 1, 1)
 		this.model.position.y = 0
 
@@ -53,46 +69,33 @@ export default class Greyfield {
 
 		this.scene.add(this.model)
 
-		// /// add portal material to portals of scene
-		this.portalMeshEntrance = this.model.children.find(
-			(child) => child.name === 'portalCircle'
-		)
-
-		this.portalMaterialProject = new THREE.MeshBasicMaterial({
-			map: this.spaceTexture,
-			side: THREE.DoubleSide,
-		})
-
-		this.portalMeshEntrance.material = this.portalMaterialProject
-		this.portalMeshEntrance.rotation.y = 3.15
-		this.portalMeshEntrance.rotation.x = 1.4
+		// portals
+		// this.portal1 = this.model.children.find(
+		// 	(child) => child.name === 'skillsCircle'
+		// )
+		// console.log(this.portal1.position)
+		// this.portal2 = this.model.children.find(
+		// 	(child) => child.name === 'taxleCircle'
+		// )
+		// console.log(this.portal2.position)
+		// this.portal3 = this.model.children.find(
+		// 	(child) => child.name === 'socialCircle'
+		// )
+		// console.log(this.portal3.position)
+		// this.portal4 = this.model.children.find(
+		// 	(child) => child.name === 'portalCircle'
+		// )
+		// console.log(this.portal4.position)
 
 		// /// Add material to lake
 		this.lakeMesh = this.model.children.find((child) => child.name === 'sea')
 		this.lakeMesh.material = this.lakeMaterial.material
 
-		// /// Add material to sun
+		// /// Add material to firePit
 		this.sunMesh = this.model.children.find(
 			(child) => child.name === 'firepitPlane001'
 		)
 		this.sunMesh.material = this.sunMaterial.material
-	}
-
-	setDebug() {
-		if (this.debug.active) {
-			this.debugFolder
-				.add(this.portalMeshEntrance.rotation, 'x')
-				.min(0)
-				.max(10)
-				.step(0.1)
-				.name('x')
-			this.debugFolder
-				.add(this.portalMeshEntrance.rotation, 'y')
-				.min(0)
-				.max(10)
-				.step(0.1)
-				.name('y')
-		}
 	}
 
 	update() {

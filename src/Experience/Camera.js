@@ -207,5 +207,12 @@ export default class Camera {
 		) {
 			this.teleportFrom()
 		}
+
+		if (
+			this.controls.getObject().position.x >= 7 &&
+			this.controls.getObject().position.y >= 2
+		) {
+			console.log('teleported')
+		}
 	}
 }

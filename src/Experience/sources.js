@@ -44,6 +44,6 @@ export default [
 	{
 		name: 'forestOfNiko',
 		type: 'gltfModel',
-		path: 'models/nikoForest/forestOfNiko6.glb',
+		path: 'models/nikoForest/forestOfNikoFinal.glb',
 	},
 ]
