@@ -31,6 +31,16 @@ export default [
 		type: 'texture',
 		path: 'textures/spaceProject/nikodevCover1.jpg',
 	},
+	{
+		name: 'eldiaTexture',
+		type: 'texture',
+		path: 'textures/eldia/eldia.jpg',
+	},
+	{
+		name: 'fullFatTexture',
+		type: 'texture',
+		path: 'textures/fullFat/fullFat.png',
+	},
 	// {
 	// 	name: 'BasicTreeM',
 	// 	type: 'gltfModel',
@@ -45,5 +55,11 @@ export default [
 		name: 'forestOfNiko',
 		type: 'gltfModel',
 		path: 'models/nikoForest/forestOfNikoFinal.glb',
+	},
+	// Matcaps
+	{
+		name: 'blueMatCap',
+		type: 'texture',
+		path: 'textures/matCaps/blue.png',
 	},
 ]

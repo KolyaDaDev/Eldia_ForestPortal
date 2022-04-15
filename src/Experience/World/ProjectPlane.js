@@ -29,6 +29,9 @@ export default class ProjectPLane {
 		this.material = new THREE.MeshBasicMaterial({
 			map: this.texture,
 			side: THREE.DoubleSide,
+			// not this, trying to rid whiteness
+			// reflectivity: 0,
+			
 		})
 		this.plane = new THREE.Mesh(this.geometry, this.material)
 		this.plane.name = this.planeName

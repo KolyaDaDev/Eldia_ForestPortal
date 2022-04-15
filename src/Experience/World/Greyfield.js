@@ -27,6 +27,15 @@ export default class Greyfield {
 
 		this.taxleTexture = this.resources.items.taxleTexture
 		this.spaceTexture = this.resources.items.spaceTexture
+		this.eldiaTexture = this.resources.items.eldiaTexture
+		this.fullFatTexture = this.resources.items.fullFatTexture
+
+		///// scene textures
+		this.treeLeavesMedTexture = this.resources.items.blueMatCap
+		this.treeLeavesMedMaterial = new THREE.MeshBasicMaterial({
+			color: 'blue',
+			wireframe: true,
+		})
 
 		// project planes
 		this.spacePlane = new ProjectPlane(
@@ -40,7 +49,7 @@ export default class Greyfield {
 			'taxlePlane'
 		)
 		this.eldiaPlane = new ProjectPlane(
-			this.taxleTexture,
+			this.eldiaTexture,
 			'eldiaPlane',
 			'eldiaPlane'
 		)
@@ -49,7 +58,11 @@ export default class Greyfield {
 			'skillsPlane',
 			'skillsPlane'
 		)
-		this.fullPlane = new ProjectPlane(this.taxleTexture, 'fullPlane', 'fullPlane')
+		this.fullPlane = new ProjectPlane(
+			this.fullFatTexture,
+			'fullPlane',
+			'fullPlane'
+		)
 
 		// Methods
 		this.setModel()
@@ -69,10 +82,11 @@ export default class Greyfield {
 
 		this.scene.add(this.model)
 
-		// portals
-		// this.portal1 = this.model.children.find(
-		// 	(child) => child.name === 'skillsCircle'
-		// )
+		// trees
+		let pattern = 'treeLeavesMed'
+		this.treeMed = this.model.children.find((child) => child.name === pattern)
+		this.treeMed.material = this.treeLeavesMedMaterial
+
 		// console.log(this.portal1.position)
 		// this.portal2 = this.model.children.find(
 		// 	(child) => child.name === 'taxleCircle'

@@ -16,6 +16,9 @@ export default class Camera {
 		// this.setRaycaster()
 
 		// this.raycaster.update()
+
+		// teleporter stopper
+		this.teleportInProgress = false
 	}
 
 	setInstance() {
@@ -128,15 +131,30 @@ export default class Camera {
 		document.addEventListener('keydown', this.onKeyDown)
 	}
 
-	teleportTo() {
-		this.instance.position.set(38.350590756203324, 3, -145.58275751036138)
-
+	teleportToEldia() {
 		console.log('teleported!')
+		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		this.teleportInProgress = true
 	}
-	teleportFrom() {
-		this.instance.position.set(-123, 3, 120)
-
-		console.log('teleported From!')
+	teleportToSkills() {
+		console.log('teleported!')
+		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		this.teleportInProgress = true
+	}
+	teleportToTaxle() {
+		console.log('teleported!')
+		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		this.teleportInProgress = true
+	}
+	teleportToFullFat() {
+		console.log('teleported!')
+		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		this.teleportInProgress = true
+	}
+	teleportToSpace() {
+		console.log('teleported!')
+		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		this.teleportInProgress = true
 	}
 
 	resize() {
@@ -192,10 +210,11 @@ export default class Camera {
 		this.prevTime = this.time
 
 		if (
-			this.controls.getObject().position.x > -122 &&
-			this.controls.getObject().position.x < -120 &&
-			this.controls.getObject().position.z > 119 &&
-			this.controls.getObject().position.z < 122
+			this.controls.getObject().position.x > 7 &&
+			this.controls.getObject().position.x < 8 &&
+			this.controls.getObject().position.z > 2 &&
+			this.controls.getObject().position.z < 3 &&
+			!this.teleportInProgress
 		) {
 			this.teleportTo()
 		}
@@ -206,13 +225,6 @@ export default class Camera {
 			this.controls.getObject().position.z < -146
 		) {
 			this.teleportFrom()
-		}
-
-		if (
-			this.controls.getObject().position.x >= 7 &&
-			this.controls.getObject().position.y >= 2
-		) {
-			console.log('teleported')
 		}
 	}
 }
