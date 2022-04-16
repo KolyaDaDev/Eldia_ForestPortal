@@ -219,12 +219,40 @@ export default class Camera {
 			this.teleportToEldia()
 		}
 		if (
-			this.controls.getObject().position.x > 37 &&
-			this.controls.getObject().position.x < 38 &&
-			this.controls.getObject().position.z > -147 &&
-			this.controls.getObject().position.z < -146
+			this.controls.getObject().position.x > 0 &&
+			this.controls.getObject().position.x < 1 &&
+			this.controls.getObject().position.z > 9 &&
+			this.controls.getObject().position.z < 10 &&
+			!this.teleportInProgress
 		) {
-			this.teleportFrom()
+			this.teleportToSkills()
+		}
+		if (
+			this.controls.getObject().position.x > -14 &&
+			this.controls.getObject().position.x < -13 &&
+			this.controls.getObject().position.z > 9 &&
+			this.controls.getObject().position.z < 10 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToTaxle()
+		}
+		if (
+			this.controls.getObject().position.x > -6 &&
+			this.controls.getObject().position.x < -5 &&
+			this.controls.getObject().position.z > -8 &&
+			this.controls.getObject().position.z < -7 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToSpace()
+		}
+		if (
+			this.controls.getObject().position.x > -15 &&
+			this.controls.getObject().position.x < -14 &&
+			this.controls.getObject().position.z > -3 &&
+			this.controls.getObject().position.z < -2 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToFullFat()
 		}
 	}
 }
