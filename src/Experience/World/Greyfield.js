@@ -68,7 +68,7 @@ export default class Greyfield {
 
 		// models
 		this.airship = new Airship()
-		console.log(this.airship, 'airship')
+
 		// Methods
 		this.setModel()
 
@@ -81,40 +81,29 @@ export default class Greyfield {
 		this.model.scale.set(1, 1, 1)
 		this.model.position.y = 0
 
-		this.model.traverse((child) => {
-			child.material = this.bakedMaterial
-		})
+		// find models
+		this.bakedModel = this.model.children.find(
+			(child) => child.name === 'base003'
+		)
 
-		this.scene.add(this.model)
+		this.seaMesh = this.model.children.find((child) => child.name === 'sea')
 
-		// trees
-		let pattern = 'treeLeavesMed'
-		this.treeMed = this.model.children.find((child) => child.name === pattern)
-		this.treeMed.material = this.treeLeavesMedMaterial
-
-		// console.log(this.portal1.position)
-		// this.portal2 = this.model.children.find(
-		// 	(child) => child.name === 'taxleCircle'
-		// )
-		// console.log(this.portal2.position)
-		// this.portal3 = this.model.children.find(
-		// 	(child) => child.name === 'socialCircle'
-		// )
-		// console.log(this.portal3.position)
-		// this.portal4 = this.model.children.find(
-		// 	(child) => child.name === 'portalCircle'
-		// )
-		// console.log(this.portal4.position)
-
-		// /// Add material to lake
-		this.lakeMesh = this.model.children.find((child) => child.name === 'sea')
-		this.lakeMesh.material = this.lakeMaterial.material
-
-		// /// Add material to firePit
-		this.sunMesh = this.model.children.find(
+		this.fireMesh = this.model.children.find(
 			(child) => child.name === 'firepitPlane001'
 		)
-		this.sunMesh.material = this.sunMaterial.material
+
+		// trees
+		// let pattern = 'treeLeavesMed'
+		// this.treeMed = this.model.children.find((child) => child.name === pattern)
+		// this.treeMed.material = this.treeLeavesMedMaterial
+
+		// materials
+
+		this.seaMesh.material = this.lakeMaterial.material
+		this.fireMesh.material = this.sunMaterial.material
+		this.bakedModel.material = this.bakedMaterial
+
+		this.scene.add(this.model)
 	}
 
 	update() {

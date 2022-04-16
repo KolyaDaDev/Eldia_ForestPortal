@@ -61,7 +61,7 @@ export default [
 	{
 		name: 'forestOfNiko',
 		type: 'gltfModel',
-		path: 'models/nikoForest/forestOfNikoFinal.glb',
+		path: 'models/nikoForest/forestOfNikoFinalMerge.glb',
 	},
 	// Matcaps
 	{
