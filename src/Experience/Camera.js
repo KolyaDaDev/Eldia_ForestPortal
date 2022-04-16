@@ -138,7 +138,7 @@ export default class Camera {
 	}
 	teleportToSkills() {
 		console.log('teleported!')
-		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		window.open('https://www.linkedin.com/in/nick-gillham-3bb6971a1/', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToTaxle() {
@@ -148,12 +148,12 @@ export default class Camera {
 	}
 	teleportToFullFat() {
 		console.log('teleported!')
-		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		window.open('https://fullfatgrappling.netlify.app', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToSpace() {
 		console.log('teleported!')
-		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		window.open('https://space-portfolio-project.netlify.app', '_self')
 		this.teleportInProgress = true
 	}
 
@@ -216,7 +216,7 @@ export default class Camera {
 			this.controls.getObject().position.z < 3 &&
 			!this.teleportInProgress
 		) {
-			this.teleportTo()
+			this.teleportToEldia()
 		}
 		if (
 			this.controls.getObject().position.x > 37 &&

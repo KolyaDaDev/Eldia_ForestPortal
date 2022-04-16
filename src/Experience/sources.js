@@ -51,6 +51,13 @@ export default [
 	// 	type: 'gltfModel',
 	// 	path: 'models/Tree2/glTF-Binary/tree_2_fini.glb',
 	// },
+
+	// models
+	{
+		name: 'airship',
+		type: 'gltfModel',
+		path: 'models/airship/airship.glb',
+	},
 	{
 		name: 'forestOfNiko',
 		type: 'gltfModel',

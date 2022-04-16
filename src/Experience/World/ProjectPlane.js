@@ -18,9 +18,6 @@ export default class ProjectPLane {
 			this.debugFolder = this.debug.ui.addFolder(debugName)
 		}
 
-		this.debugParams = {
-			scale: 2,
-		}
 		this.setDebug()
 	}
 
@@ -31,7 +28,6 @@ export default class ProjectPLane {
 			side: THREE.DoubleSide,
 			// not this, trying to rid whiteness
 			// reflectivity: 0,
-			
 		})
 		this.plane = new THREE.Mesh(this.geometry, this.material)
 		this.plane.name = this.planeName

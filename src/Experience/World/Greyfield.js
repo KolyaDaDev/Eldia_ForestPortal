@@ -4,6 +4,8 @@ import PortalMaterial from './shaderMaterials/PortalWaves.js'
 import LakeMaterial from './shaderMaterials/LakeMaterial.js'
 import SunMaterial from './shaderMaterials/SunMaterial.js'
 import ProjectPlane from './ProjectPlane.js'
+import Airship from './Airship.js'
+
 export default class Greyfield {
 	constructor() {
 		this.experience = new Experience()
@@ -64,6 +66,9 @@ export default class Greyfield {
 			'fullPlane'
 		)
 
+		// models
+		this.airship = new Airship()
+		console.log(this.airship, 'airship')
 		// Methods
 		this.setModel()
 
@@ -116,6 +121,7 @@ export default class Greyfield {
 		this.portalMaterial.update()
 		this.lakeMaterial.update()
 		this.sunMaterial.update()
+		this.airship.update()
 		// this.raycaster.update()
 	}
 }
