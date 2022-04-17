@@ -141,9 +141,9 @@ export default class Camera {
 		window.open('https://www.linkedin.com/in/nick-gillham-3bb6971a1/', '_self')
 		this.teleportInProgress = true
 	}
-	teleportToTaxle() {
+	teleportToRandom() {
 		console.log('teleported!')
-		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		window.open('https://theuselessweb.com/', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToFullFat() {
@@ -234,7 +234,7 @@ export default class Camera {
 			this.controls.getObject().position.z < 10 &&
 			!this.teleportInProgress
 		) {
-			this.teleportToTaxle()
+			this.teleportToRandom()
 		}
 		if (
 			this.controls.getObject().position.x > -6 &&

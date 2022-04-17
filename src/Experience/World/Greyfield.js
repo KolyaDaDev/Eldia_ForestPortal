@@ -31,6 +31,7 @@ export default class Greyfield {
 		this.spaceTexture = this.resources.items.spaceTexture
 		this.eldiaTexture = this.resources.items.eldiaTexture
 		this.fullFatTexture = this.resources.items.fullFatTexture
+		this.skillsTexture = this.resources.items.skillsTexture
 
 		///// scene textures
 		this.treeLeavesMedTexture = this.resources.items.blueMatCap
@@ -56,7 +57,7 @@ export default class Greyfield {
 			'eldiaPlane'
 		)
 		this.skillsPlane = new ProjectPlane(
-			this.taxleTexture,
+			this.skillsTexture,
 			'skillsPlane',
 			'skillsPlane'
 		)
@@ -92,7 +93,7 @@ export default class Greyfield {
 		this.greenCircle = this.model.children.find(
 			(child) => child.name === 'greenCircle'
 		)
-		console.log(this.greenCircle)
+
 		this.treeMed = this.model.children.find(
 			(child) => child.name === 'treeLeavesMed'
 		)

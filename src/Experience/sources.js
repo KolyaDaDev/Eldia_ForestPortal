@@ -41,6 +41,11 @@ export default [
 		type: 'texture',
 		path: 'textures/fullFat/fullFat.png',
 	},
+	{
+		name: 'skillsTexture',
+		type: 'texture',
+		path: 'textures/skills/skills.jpg',
+	},
 	// {
 	// 	name: 'BasicTreeM',
 	// 	type: 'gltfModel',
