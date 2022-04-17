@@ -45,11 +45,11 @@ export default class Greyfield {
 			'spacePortal',
 			'spacePlane'
 		)
-		this.taxlePlane = new ProjectPlane(
-			this.taxleTexture,
-			'taxlePlane',
-			'taxlePlane'
-		)
+		// this.taxlePlane = new ProjectPlane(
+		// 	this.taxleTexture,
+		// 	'taxlePlane',
+		// 	'taxlePlane'
+		// )
 		this.eldiaPlane = new ProjectPlane(
 			this.eldiaTexture,
 			'eldiaPlane',
@@ -81,27 +81,28 @@ export default class Greyfield {
 		this.model.scale.set(1, 1, 1)
 		this.model.position.y = 0
 
-		// find models
-		this.bakedModel = this.model.children.find(
-			(child) => child.name === 'base003'
-		)
+		// FIND MODELS
+		this.bakedModel = this.model.children.find((child) => child.name === 'baked')
 
 		this.seaMesh = this.model.children.find((child) => child.name === 'sea')
 
 		this.fireMesh = this.model.children.find(
 			(child) => child.name === 'firepitPlane001'
 		)
+		this.greenCircle = this.model.children.find(
+			(child) => child.name === 'greenCircle'
+		)
+		console.log(this.greenCircle)
+		this.treeMed = this.model.children.find(
+			(child) => child.name === 'treeLeavesMed'
+		)
 
-		// trees
-		// let pattern = 'treeLeavesMed'
-		// this.treeMed = this.model.children.find((child) => child.name === pattern)
-		// this.treeMed.material = this.treeLeavesMedMaterial
-
-		// materials
-
+		// MATERIALS
 		this.seaMesh.material = this.lakeMaterial.material
 		this.fireMesh.material = this.sunMaterial.material
 		this.bakedModel.material = this.bakedMaterial
+		this.treeMed.material = this.treeLeavesMedMaterial
+		this.greenCircle.material = this.portalMaterial.material
 
 		this.scene.add(this.model)
 	}
