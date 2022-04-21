@@ -98,6 +98,57 @@ export default class Greyfield {
 			(child) => child.name === 'treeLeavesMed'
 		)
 
+		for (let i = 0; i < this.model.children.length; i++) {
+			switch (this.model.children[i].name) {
+				case 'greenPoint':
+					this.greenPoint = this.model.children[i]
+					this.greenPoint.material = this.bakedMaterial
+					break
+				case 'redPoint':
+					this.redPoint = this.model.children[i]
+					this.redPoint.material = this.bakedMaterial
+					break
+				case 'yellowPoint':
+					this.yellowPoint = this.model.children[i]
+					this.yellowPoint.material = this.bakedMaterial
+					break
+				case 'bluePoint':
+					this.bluePoint = this.model.children[i]
+					this.bluePoint.material = this.bakedMaterial
+					break
+				case 'purplePoint':
+					this.purplePoint = this.model.children[i]
+					this.purplePoint.material = this.bakedMaterial
+					break
+				case 'stonesBoard':
+					this.stonesBoard = this.model.children[i]
+					this.stonesBoard.material = this.bakedMaterial
+					break
+				case 'purpleBoard':
+					this.purpleBoard = this.model.children[i]
+					this.purpleBoard.material = this.bakedMaterial
+					break
+				case 'greenBoard':
+					this.greenBoard = this.model.children[i]
+					this.greenBoard.material = this.bakedMaterial
+					break
+				case 'redBoard':
+					this.redBoard = this.model.children[i]
+					this.redBoard.material = this.bakedMaterial
+					break
+				case 'blueBoard':
+					this.blueBoard = this.model.children[i]
+					this.blueBoard.material = this.bakedMaterial
+					break
+				case 'yellowBoard':
+					this.yellowBoard = this.model.children[i]
+					this.yellowBoard.material = this.bakedMaterial
+					break
+				default:
+					break
+			}
+		}
+
 		// MATERIALS
 		this.seaMesh.material = this.lakeMaterial.material
 		this.fireMesh.material = this.sunMaterial.material

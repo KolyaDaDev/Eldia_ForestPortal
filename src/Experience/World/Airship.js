@@ -1,15 +1,18 @@
 import Experience from '../Experience'
-
+import * as THREE from 'three'
 export default class Airship {
 	constructor() {
 		this.experience = new Experience()
 		this.scene = this.experience.scene
 		this.resources = this.experience.resources
 		this.time = this.experience.time
-
+		this.matcap = this.resources.blueMatCap
 		// resource for airship model
 		this.resource = this.resources.items.airship
-
+		this.material = new THREE.MeshBasicMaterial({
+			color: 'green',
+			wireframe: true,
+		})
 		this.radiusX = 15
 		this.radiusY = 15
 
@@ -25,8 +28,12 @@ export default class Airship {
 
 	setModel() {
 		this.model = this.resource.scene
-
+		this.modelBaloon = this.model.children[0].children
+		this.modelBaloon.forEach((child) => {
+			child.material = this.material
+		})
 		this.scene.add(this.model)
+		console.log(this.modelBaloon)
 	}
 
 	setDebug() {
