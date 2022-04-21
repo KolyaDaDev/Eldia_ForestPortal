@@ -21,11 +21,7 @@ export default [
 		type: 'texture',
 		path: 'models/nikoForest/baked.jpg',
 	},
-	{
-		name: 'taxleTexture',
-		type: 'texture',
-		path: 'textures/taxle/taxle.jpg',
-	},
+
 	{
 		name: 'spaceTexture',
 		type: 'texture',
@@ -46,16 +42,6 @@ export default [
 		type: 'texture',
 		path: 'textures/skills/skills.jpg',
 	},
-	// {
-	// 	name: 'BasicTreeM',
-	// 	type: 'gltfModel',
-	// 	path: 'models/Tree/glTF-Binary/tree.glb',
-	// },
-	// {
-	// 	name: 'basicTreeL',
-	// 	type: 'gltfModel',
-	// 	path: 'models/Tree2/glTF-Binary/tree_2_fini.glb',
-	// },
 
 	// models
 	{
