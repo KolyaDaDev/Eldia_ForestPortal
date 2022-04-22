@@ -4,14 +4,15 @@ import PortalMaterial from './shaderMaterials/PortalWaves.js'
 import LakeMaterial from './shaderMaterials/LakeMaterial.js'
 import SunMaterial from './shaderMaterials/SunMaterial.js'
 import ProjectPlane from './ProjectPlane.js'
-import Airship from './Airship.js'
-
+import PointsOfInterest from './PointsOfInterest'
+import Raycaster from '../Utils/Raycaster'
 export default class Greyfield {
 	constructor() {
 		this.experience = new Experience()
 		this.scene = this.experience.scene
 		this.resources = this.experience.resources
 		this.time = this.experience.time
+		this.camera = this.experience.camera
 
 		// Resource for landscape
 		this.resource = this.resources.items.forestOfNiko
@@ -26,7 +27,6 @@ export default class Greyfield {
 		this.sunMaterial = new SunMaterial()
 
 		// project textures
-
 		this.taxleTexture = this.resources.items.taxleTexture
 		this.spaceTexture = this.resources.items.spaceTexture
 		this.eldiaTexture = this.resources.items.eldiaTexture
@@ -34,23 +34,18 @@ export default class Greyfield {
 		this.skillsTexture = this.resources.items.skillsTexture
 
 		///// scene textures
-		this.treeLeavesMedTexture = this.resources.items.blueMatCap
 		this.treeLeavesMedMaterial = new THREE.MeshBasicMaterial({
 			color: 'blue',
 			wireframe: true,
 		})
 
-		// project planes
+		// instantiations
+
 		this.spacePlane = new ProjectPlane(
 			this.spaceTexture,
 			'spacePortal',
 			'spacePlane'
 		)
-		// this.taxlePlane = new ProjectPlane(
-		// 	this.taxleTexture,
-		// 	'taxlePlane',
-		// 	'taxlePlane'
-		// )
 		this.eldiaPlane = new ProjectPlane(
 			this.eldiaTexture,
 			'eldiaPlane',
@@ -67,8 +62,12 @@ export default class Greyfield {
 			'fullPlane'
 		)
 
-		// models
-		this.airship = new Airship()
+		// this.poi = new PointsOfInterest()
+		// instead of doing this could I not just use a raycaster and cause an html element to appear on screen?
+		this.raycaster = new Raycaster(
+			this.resource,
+			this.camera.controls.getObject().position
+		)
 
 		// Methods
 		this.setModel()
@@ -163,7 +162,7 @@ export default class Greyfield {
 		this.portalMaterial.update()
 		this.lakeMaterial.update()
 		this.sunMaterial.update()
-		this.airship.update()
+		// this.poi.update()
 		// this.raycaster.update()
 	}
 }

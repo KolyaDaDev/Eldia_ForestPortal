@@ -9,13 +9,14 @@ export default class Camera {
 		this.scene = this.experience.scene
 		this.canvas = this.experience.canvas
 		//// added for passing to ray
-		this.resource = this.experience.resources
+		// this.resource = this.experience.resources.forestOfNiko
+
+		// instantiate raycaster
 
 		this.setInstance()
 		this.setControls()
-		// this.setRaycaster()
-
-		// this.raycaster.update()
+		// instantiate after the instance and controls (above have been created so that we can pass as args)
+		// this.createRaycaster()
 
 		// teleporter stopper
 		this.teleportInProgress = false
@@ -35,14 +36,7 @@ export default class Camera {
 
 	setControls() {
 		// properties for controls
-		this.objects = []
 
-		this.raycaster = new THREE.Raycaster(
-			new THREE.Vector3(),
-			new THREE.Vector3(0, -10, 0),
-			0,
-			10
-		)
 		this.moveForward = false
 		this.moveBackward = false
 		this.moveLeft = false
@@ -57,6 +51,7 @@ export default class Camera {
 
 		this.blocker = document.getElementById('blocker')
 		this.instructions = document.getElementById('instructions')
+		this.teleportScreen = document.getElementById('teleport')
 
 		this.instructions.addEventListener('click', () => {
 			this.controls.lock()
@@ -165,13 +160,6 @@ export default class Camera {
 	update() {
 		this.time = performance.now()
 		if (this.controls.isLocked === true) {
-			this.raycaster.ray.origin.copy(this.controls.getObject().position)
-			// this.raycaster.ray.origin.y -= 10
-
-			this.intersections = this.raycaster.intersectObjects(this.objects, false)
-
-			this.onObject = this.intersections.length > 0
-
 			// is the difference between timestamps, just as with delta time used originally. Averaging around 0.016.
 			this.delta = (this.time - this.prevTime) / 1000
 

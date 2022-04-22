@@ -44,11 +44,7 @@ export default [
 	},
 
 	// models
-	{
-		name: 'airship',
-		type: 'gltfModel',
-		path: 'models/airship/airship.glb',
-	},
+
 	{
 		name: 'forestOfNiko',
 		type: 'gltfModel',

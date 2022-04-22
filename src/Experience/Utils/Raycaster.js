@@ -12,10 +12,8 @@ export default class Raycaster extends EventEmitter {
 		this.resource = sceneResource
 		this.cameraPosition = camPos
 		// for use with mouse targeting
-		// this.sizes = this.experience.sizes
-		// this.mouse = new THREE.Vector2()
-
-		// this.camera = this.experience.camera
+		this.sizes = this.experience.sizes
+		this.mouse = new THREE.Vector2()
 
 		// create Raycaster
 		this.createRaycaster()
@@ -30,22 +28,25 @@ export default class Raycaster extends EventEmitter {
 		this.raycaster.set(this.rayOrigin, this.rayDirection)
 
 		// for use with mouse targeting
-		// window.addEventListener('mousemove', (e) => {
-		// 	this.mouse.x = (e.clientX / this.sizes.width) * 2 - 1
-		// 	this.mouse.y = -(e.clientY / this.sizes.height) * 2 + 1
-		// 	this.trigger('mousemoved')
-		// })
+		window.addEventListener('mousemove', (e) => {
+			this.mouse.x = (e.clientX / this.sizes.width) * 2 - 1
+			this.mouse.y = -(e.clientY / this.sizes.height) * 2 + 1
+			console.log(this.mouse)
+			// lol the pointer lock is locking the mouse at one coord on screen!
+			this.trigger('mousemoved')
+		})
 	}
 
 	update() {
 		this.rayOrigin = this.cameraPosition
-		this.raycaster.set(this.rayOrigin, this.rayDirection)
+		// this.raycaster.set(this.rayOrigin, this.rayDirection)
+		this.raycaster.setFromCamera(this.mouse, this.rayOrigin)
 		this.intersectObjects = this.raycaster.intersectObjects(
 			this.resource.scene.children
 		)
 		if (this.intersectObjects.length) {
-			this.distanceToGround = this.intersectObjects[0].distance
-			console.log(this.distanceToGround)
+			this.distanceToObject = this.intersectObjects[0].distance
+			console.log(this.distanceToObject)``
 		}
 	}
 }

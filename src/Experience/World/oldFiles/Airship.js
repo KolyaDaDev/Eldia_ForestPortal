@@ -1,4 +1,4 @@
-import Experience from '../Experience'
+import Experience from '../../Experience'
 import * as THREE from 'three'
 export default class Airship {
 	constructor() {
