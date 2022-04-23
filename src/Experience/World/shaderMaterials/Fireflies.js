@@ -10,7 +10,7 @@ export default class FireFlies {
 		this.time = this.experience.time
 
 		/// fly specs
-		this.flyCount = 100
+		this.flyCount = 500
 		this.flyMaterial = new THREE.ShaderMaterial({
 			depthWrite: false,
 			blending: THREE.AdditiveBlending,

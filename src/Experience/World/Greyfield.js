@@ -66,7 +66,7 @@ export default class Greyfield {
 		// instead of doing this could I not just use a raycaster and cause an html element to appear on screen?
 		this.raycaster = new Raycaster(
 			this.resource,
-			this.camera.controls.getObject().position
+			this.camera.controls.object.position
 		)
 
 		// Methods
@@ -163,6 +163,6 @@ export default class Greyfield {
 		this.lakeMaterial.update()
 		this.sunMaterial.update()
 		// this.poi.update()
-		// this.raycaster.update()
+		this.raycaster.update()
 	}
 }
