@@ -2,32 +2,91 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import EventEmitter from './EventEmitter.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
-
+import Experience from '../Experience'
+import gsap from 'gsap'
 export default class Resources extends EventEmitter {
 	constructor(sources) {
 		super()
-
+		this.experience = new Experience()
+		this.scene = this.experience.scene
 		this.sources = sources
 
 		this.items = {}
 		this.toLoad = this.sources.length
 		this.loaded = 0
 
+		// LOADING SCREEN
+
+		this.addLoadScreen()
+		this.loadingBarElement = document.querySelector('.loading-bar')
+		this.loadingManager = new THREE.LoadingManager(
+			// activate when loaded
+			() => {
+				window.setTimeout(() => {
+					// overlay animation
+					gsap.to(this.overlayMat.uniforms.uAlpha, {
+						duration: 3,
+						value: 0,
+						delay: 1,
+					})
+
+					// update loading element
+					this.loadingBarElement.classList.add('ended')
+					this.loadingBarElement.style.transform = ''
+				}, 500)
+			},
+			// activate during progression
+			(itemUrl, itemsLoaded, itemsTotal) => {
+				// calculate progress and transform loading loadingBarElement
+				const progressRatio = itemsLoaded / itemsTotal
+				this.loadingBarElement.style.transform = `scaleX(${progressRatio})`
+			}
+		)
+
 		this.setLoaders()
 		this.startLoading()
 	}
 
+	addLoadScreen() {
+		this.overlayGeo = new THREE.PlaneGeometry(2, 2, 1, 1)
+		this.overlayMat = new THREE.ShaderMaterial({
+			transparent: true,
+			uniforms: {
+				uAlpha: { value: 1 },
+			},
+			vertexShader: `
+        void main()
+        {
+            gl_Position = vec4(position, 1.0);
+        }
+    `,
+			fragmentShader: `
+        uniform float uAlpha;
+
+        void main()
+        {
+            gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
+        }
+    `,
+		})
+		this.overlay = new THREE.Mesh(this.overlayGeo, this.overlayMat)
+		this.scene.add(this.overlay)
+	}
+
 	setLoaders() {
 		this.loaders = {}
-		this.loaders.dracoLoader = new DRACOLoader()
+
+		this.loaders.dracoLoader = new DRACOLoader(this.loadingManager)
 		this.loaders.dracoLoader.setDecoderPath('/draco/')
 
-		this.loaders.gltfLoader = new GLTFLoader()
+		this.loaders.gltfLoader = new GLTFLoader(this.loadingManager)
 
 		this.loaders.gltfLoader.dracoLoader = this.loaders.dracoLoader
 
-		this.loaders.textureLoader = new THREE.TextureLoader()
-		this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+		this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManager)
+		this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(
+			this.loadingManager
+		)
 	}
 
 	startLoading() {
