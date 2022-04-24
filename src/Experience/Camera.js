@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js'
+import gsap from 'gsap'
 
 export default class Camera {
 	constructor() {
@@ -31,7 +32,7 @@ export default class Camera {
 		)
 
 		// sets player start
-		this.instance.position.set(0, 1, 0)
+		this.instance.position.set(0, 1.1, 0)
 		this.scene.add(this.instance)
 	}
 
@@ -77,55 +78,65 @@ export default class Camera {
 		this.controls.handleResize()
 	}
 
+	sendup() {
+		gsap.to(this.instance.position, {
+			duration: 1,
+			ease: 'power2.inOut',
+			y: '+=1.1',
+		})
+	}
+
 	update() {
 		this.controls.update(this.time.delta)
-
+		if (this.instance.position.y < 1) {
+			this.sendup()
+		}
 		// console.log(this.controls.object.position)
 
-		// 	if (
-		// 		this.controls.getObject().position.x > 7 &&
-		// 		this.controls.getObject().position.x < 8 &&
-		// 		this.controls.getObject().position.z > 2 &&
-		// 		this.controls.getObject().position.z < 3 &&
-		// 		!this.teleportInProgress
-		// 	) {
-		// 		this.teleportToEldia()
-		// 	}
-		// 	if (
-		// 		this.controls.getObject().position.x > 0 &&
-		// 		this.controls.getObject().position.x < 1 &&
-		// 		this.controls.getObject().position.z > 9 &&
-		// 		this.controls.getObject().position.z < 10 &&
-		// 		!this.teleportInProgress
-		// 	) {
-		// 		this.teleportToSkills()
-		// 	}
-		// 	if (
-		// 		this.controls.getObject().position.x > -14 &&
-		// 		this.controls.getObject().position.x < -13 &&
-		// 		this.controls.getObject().position.z > 9 &&
-		// 		this.controls.getObject().position.z < 10 &&
-		// 		!this.teleportInProgress
-		// 	) {
-		// 		this.teleportToRandom()
-		// 	}
-		// 	if (
-		// 		this.controls.getObject().position.x > -6 &&
-		// 		this.controls.getObject().position.x < -5 &&
-		// 		this.controls.getObject().position.z > -8 &&
-		// 		this.controls.getObject().position.z < -7 &&
-		// 		!this.teleportInProgress
-		// 	) {
-		// 		this.teleportToSpace()
-		// 	}
-		// 	if (
-		// 		this.controls.getObject().position.x > -15 &&
-		// 		this.controls.getObject().position.x < -14 &&
-		// 		this.controls.getObject().position.z > -3 &&
-		// 		this.controls.getObject().position.z < -2 &&
-		// 		!this.teleportInProgress
-		// 	) {
-		// 		this.teleportToFullFat()
-		// 	}
+		if (
+			this.controls.object.position.x > 7 &&
+			this.controls.object.position.x < 8 &&
+			this.controls.object.position.z > 2 &&
+			this.controls.object.position.z < 3 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToEldia()
+		}
+		if (
+			this.controls.object.position.x > 0 &&
+			this.controls.object.position.x < 1 &&
+			this.controls.object.position.z > 9 &&
+			this.controls.object.position.z < 10 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToSkills()
+		}
+		if (
+			this.controls.object.position.x > -14 &&
+			this.controls.object.position.x < -13 &&
+			this.controls.object.position.z > 9 &&
+			this.controls.object.position.z < 10 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToRandom()
+		}
+		if (
+			this.controls.object.position.x > -6 &&
+			this.controls.object.position.x < -5 &&
+			this.controls.object.position.z > -8 &&
+			this.controls.object.position.z < -7 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToSpace()
+		}
+		if (
+			this.controls.object.position.x > -15 &&
+			this.controls.object.position.x < -14 &&
+			this.controls.object.position.z > -3 &&
+			this.controls.object.position.z < -2 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToFullFat()
+		}
 	}
 }

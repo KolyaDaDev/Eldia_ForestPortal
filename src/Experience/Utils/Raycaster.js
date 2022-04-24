@@ -26,12 +26,7 @@ export default class Raycaster extends EventEmitter {
 		this.rayDirection = new THREE.Vector3(0, 0, 1)
 		this.rayDirection.normalize()
 
-		this.raycaster = new THREE.Raycaster(
-			this.rayOrigin,
-			this.rayDirection,
-			0,
-			1000
-		)
+		this.raycaster = new THREE.Raycaster(this.rayOrigin, this.rayDirection, 0, 3)
 
 		// for use with mouse targeting
 		window.addEventListener('mousemove', (e) => {
