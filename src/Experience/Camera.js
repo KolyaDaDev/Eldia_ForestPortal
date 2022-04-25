@@ -19,6 +19,14 @@ export default class Camera {
 		this.setControls()
 		// instantiate after the instance and controls (above have been created so that we can pass as args)
 
+		// Debug
+		this.debug = this.experience.debug
+		if (this.debug.active) {
+			this.debugFolder = this.debug.ui.addFolder('camera')
+			this.controls.enabled = false
+		}
+
+		this.setDebug()
 		// teleporter stopper
 		this.teleportInProgress = false
 	}
@@ -58,7 +66,7 @@ export default class Camera {
 	}
 	teleportToRandom() {
 		console.log('teleported!')
-		window.open('https://theuselessweb.com/', '_self')
+		window.open('https://twitter.com/eth_nikodev', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToFullFat() {
@@ -84,6 +92,12 @@ export default class Camera {
 			ease: 'power2.inOut',
 			y: '+=1.1',
 		})
+	}
+
+	setDebug() {
+		if (this.debug.active) {
+			this.debugFolder.add(this.controls, 'enabled')
+		}
 	}
 
 	update() {

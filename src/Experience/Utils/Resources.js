@@ -19,6 +19,7 @@ export default class Resources extends EventEmitter {
 
 		this.addLoadScreen()
 		this.loadingBarElement = document.querySelector('.loading-bar')
+		this.loadingBarText = document.querySelector('.loadingText')
 		this.loadingManager = new THREE.LoadingManager(
 			// activate when loaded
 			() => {
@@ -32,6 +33,7 @@ export default class Resources extends EventEmitter {
 
 					// update loading element
 					this.loadingBarElement.classList.add('ended')
+					this.loadingBarText.classList.add('ended')
 					this.loadingBarElement.style.transform = ''
 				}, 500)
 			},
@@ -65,7 +67,7 @@ export default class Resources extends EventEmitter {
 
         void main()
         {
-            gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
+            gl_FragColor = vec4(0.4, 0.18, 0.80, uAlpha);
         }
     `,
 		})
@@ -83,10 +85,8 @@ export default class Resources extends EventEmitter {
 
 		this.loaders.gltfLoader.dracoLoader = this.loaders.dracoLoader
 
-		this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManager)
-		this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(
-			this.loadingManager
-		)
+		this.loaders.textureLoader = new THREE.TextureLoader()
+		this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
 	}
 
 	startLoading() {

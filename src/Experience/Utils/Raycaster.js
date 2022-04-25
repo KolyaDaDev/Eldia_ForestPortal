@@ -18,6 +18,10 @@ export default class Raycaster extends EventEmitter {
 
 		// create Raycaster
 		this.createRaycaster()
+
+		// create event listeners
+		this.showSign = false
+		this.infoBox = document.querySelector('.infoBox')
 	}
 
 	createRaycaster() {
@@ -37,6 +41,84 @@ export default class Raycaster extends EventEmitter {
 		})
 	}
 
+	showNotice(board) {
+		switch (board) {
+			case 'stonesBoard':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some weird alien rocks...'
+				console.log('added visible')
+				break
+			case 'redBoard':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML =
+					'Project Eldia - Some crazy big project I thought I"d give a crack at. '
+				console.log('added visible')
+				break
+			case 'purpleBoard':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a purpleBoard'
+				console.log('added visible')
+				break
+			case 'greenBoard':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a greenBoard'
+				console.log('added visible')
+				break
+			case 'blueBoard':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a redBoard'
+				console.log('added visible')
+				break
+			case 'yellowBoard':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a redBoard'
+				console.log('added visible')
+				break
+			case 'yellowPoint':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a redBoard'
+				console.log('added visible')
+				break
+			case 'redPoint':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a redBoard'
+				console.log('added visible')
+				break
+			case 'greenPoint':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a redBoard'
+				console.log('added visible')
+				break
+			case 'bluePoint':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a redBoard'
+				console.log('added visible')
+				break
+			case 'purplePoint':
+				this.showSign = true
+				this.infoBox.classList.add('visible')
+				this.infoBox.innerHTML = 'Some project with a redBoard'
+				console.log('added visible')
+				break
+			default:
+				break
+		}
+
+		setTimeout(() => {
+			this.infoBox.classList.remove('visible')
+			this.showSign = false
+		}, 4000)
+	}
 	update() {
 		this.raycaster.setFromCamera(this.mouse, this.camera)
 		this.intersectObjects = this.raycaster.intersectObjects(
@@ -45,8 +127,54 @@ export default class Raycaster extends EventEmitter {
 
 		if (this.intersectObjects.length) {
 			this.distanceToObject = this.intersectObjects[0].object
-			if (this.distanceToObject.name === 'stonesBoard') {
-				alert('ancient alien stones....')
+			switch (this.distanceToObject.name) {
+				case 'stonesBoard':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'redBoard':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'purpleBoard':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'greenBoard':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'blueBoard':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'yellowBoard':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'yellowPoint':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'redPoint':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'greenPoint':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'bluePoint':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+				case 'purplePoint':
+					this.showNotice(this.distanceToObject.name)
+
+					break
+
+				default:
+					break
 			}
 		}
 	}
