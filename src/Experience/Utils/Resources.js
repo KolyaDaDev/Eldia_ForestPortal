@@ -15,21 +15,32 @@ export default class Resources extends EventEmitter {
 		this.toLoad = this.sources.length
 		this.loaded = 0
 
-		// LOADING SCREEN
-
-		this.addLoadScreen()
+		// HELPER SCREEN and LOADING BAR/TEXT
+		this.playButton = document.getElementById('play')
+		this.instructions = document.querySelector('.instructions')
 		this.loadingBarElement = document.querySelector('.loading-bar')
 		this.loadingBarText = document.querySelector('.loadingText')
+
+		this.playButton.addEventListener('click', (e) => {
+			gsap.to(this.overlayMat.uniforms.uAlpha, {
+				duration: 3,
+				value: 0,
+				delay: 1,
+			})
+			this.instructions.classList.remove('visible')
+			setTimeout(() => {
+				this.instructions.style.display = 'none'
+				this.loadingBarText.style.display = 'none'
+			}, 3000)
+		})
+
+		this.addLoadScreen()
+
 		this.loadingManager = new THREE.LoadingManager(
 			// activate when loaded
 			() => {
 				window.setTimeout(() => {
 					// overlay animation
-					gsap.to(this.overlayMat.uniforms.uAlpha, {
-						duration: 3,
-						value: 0,
-						delay: 1,
-					})
 
 					// update loading element
 					this.loadingBarElement.classList.add('ended')
@@ -67,7 +78,7 @@ export default class Resources extends EventEmitter {
 
         void main()
         {
-            gl_FragColor = vec4(0.4, 0.18, 0.80, uAlpha);
+            gl_FragColor = vec4(1.0, 1.0, 1.0, uAlpha);
         }
     `,
 		})
@@ -85,8 +96,10 @@ export default class Resources extends EventEmitter {
 
 		this.loaders.gltfLoader.dracoLoader = this.loaders.dracoLoader
 
-		this.loaders.textureLoader = new THREE.TextureLoader()
-		this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+		this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManager)
+		this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(
+			this.loadingManager
+		)
 	}
 
 	startLoading() {

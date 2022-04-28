@@ -1,6 +1,9 @@
 * {
 	margin: 0;
 	padding: 0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html,
@@ -13,6 +16,7 @@ body {
 	top: 0;
 	left: 0;
 	outline: none;
+	cursor: crosshair;
 }
 
 @font-face {
@@ -21,36 +25,32 @@ body {
 }
 
 .loadingText {
-	color: #ffffff;
-
-	height: 100vh;
-	width: 100vw;
-
 	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	top: 85%;
+	left: 45vw;
+	width: 10vw;
 
-	font-size: 10vw;
+	font-size: 2vw;
 	font-family: minecraft;
+	color: #000000;
 
 	opacity: 1;
 }
 
 .loadingText.ended {
 	opacity: 0;
-	transition: opacity 0.5s;
+	transition: opacity 2s;
 }
 
 .loading-bar {
 	position: absolute;
-	top: 50%;
+	top: 80%;
 	width: 100%;
-	height: 2px;
-	background: rgb(255, 255, 255);
+	height: 4px;
+	background: rgb(0, 0, 0);
 	transform: scaleX(0.3);
 	transform-origin: top left;
-	transition: transform 0.5s;
+	transition: transform 1s;
 }
 
 .loading-bar.ended {
@@ -59,17 +59,48 @@ body {
 	transition: transform 1.5s ease-in-out;
 }
 
-#teleport {
+.instructions {
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	transform: scale(0, 0);
-	transition: transform 0.5s;
+	width: 50vw;
+	height: 50vh;
+	top: 25vh;
+	left: 25vw;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	color: #fff;
+	font-family: minecraft;
+
+	background-color: rgba(0, 0, 0, 0.787);
+	opacity: 0;
+	transition: opacity 3s;
+	border-radius: 4px;
 }
 
-#teleport.visible {
-	transform: scale(1, 1);
+.instructions.visible {
+	opacity: 1;
+}
+
+.playOuter {
+	width: 100px;
+	height: 50px;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#play {
+	border: #fff solid;
+	border-radius: 4px;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+#play:hover {
+	border: #fff dotted;
+	padding: 15px 20px;
 }
 
 .point {
