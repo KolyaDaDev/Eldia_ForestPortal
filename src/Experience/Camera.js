@@ -56,7 +56,7 @@ export default class Camera {
 
 	teleportToEldia() {
 		console.log('teleported!')
-		window.open('https://floating-cove-66937.herokuapp.com/about', '_self')
+		window.open('https://peaceful-inlet-40638.herokuapp.com/', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToSkills() {
