@@ -53,62 +53,61 @@ export default class Raycaster extends EventEmitter {
 				this.showSign = true
 				this.infoBox.classList.add('visible')
 				this.infoBox.innerHTML =
-					'Project Eldia - Some crazy big project I thought I"d give a crack at. '
+					'Project Eldia - A full stack application using MongoDB, Express, React, Node. Currently underdevelopment. Aim is to become a fully interactive MMORPG using ThreeJS as the 3D generator.  '
 				console.log('added visible')
 				break
 			case 'purpleBoard':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a purpleBoard'
+				this.infoBox.innerHTML =
+					'A static PWA made with Gatsby for a local Judo club.'
 				console.log('added visible')
 				break
 			case 'greenBoard':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a greenBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML = 'Random mysterious portal...'
 				break
 			case 'blueBoard':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a redBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML = 'Enter to visit my linkedIn page and get in touch'
+
 				break
 			case 'yellowBoard':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a redBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML =
+					'A Basic portfolio template mixing ThreeJS and standard FrontEnd web technologies.'
+
 				break
 			case 'yellowPoint':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a redBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML = 'Space Theme Portfolio Project'
+
 				break
 			case 'redPoint':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a redBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML = 'Project Eldia'
+
 				break
 			case 'greenPoint':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a redBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML = 'Mysterious Green Portal'
+				console.log('added')
 				break
 			case 'bluePoint':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a redBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML = 'Social'
 				break
 			case 'purplePoint':
 				this.showSign = true
 				this.infoBox.classList.add('visible')
-				this.infoBox.innerHTML = 'Some project with a redBoard'
-				console.log('added visible')
+				this.infoBox.innerHTML = 'Gatsby PWA'
 				break
 			default:
 				break
