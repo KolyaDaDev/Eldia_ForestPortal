@@ -8,7 +8,7 @@ export default class World {
 		this.experience = new Experience()
 		this.scene = this.experience.scene
 		this.resources = this.experience.resources
-		this.fireFlies = new FireFlies()
+		// this.fireFlies = new FireFlies()
 		// Wait for resources
 		this.resources.on('ready', () => {
 			// Setup
@@ -24,10 +24,10 @@ export default class World {
 		if (this.landscape) this.landscape.update()
 		if (this.greyfield) this.greyfield.update()
 
-		this.fireFlies.update()
+		// this.fireFlies.update()
 	}
 
 	resize() {
-		this.fireFlies.resize()
+		// this.fireFlies.resize()
 	}
 }

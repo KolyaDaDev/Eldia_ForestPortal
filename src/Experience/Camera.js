@@ -16,17 +16,17 @@ export default class Camera {
 		// instantiate raycaster
 
 		this.setInstance()
-		this.setControls()
+		// this.setControls()
 		// instantiate after the instance and controls (above have been created so that we can pass as args)
 
 		// Debug
 		this.debug = this.experience.debug
 		if (this.debug.active) {
-			this.debugFolder = this.debug.ui.addFolder('camera')
-			this.controls.enabled = false
+			// this.debugFolder = this.debug.ui.addFolder('camera')
+			// this.controls.enabled = false
 		}
 
-		this.setDebug()
+		// this.setDebug()
 		// teleporter stopper
 		this.teleportInProgress = false
 	}
@@ -83,7 +83,7 @@ export default class Camera {
 	resize() {
 		this.instance.aspect = this.sizes.width / this.sizes.height
 		this.instance.updateProjectionMatrix()
-		this.controls.handleResize()
+		// this.controls.handleResize()
 	}
 
 	sendup() {
@@ -101,56 +101,55 @@ export default class Camera {
 	}
 
 	update() {
-		this.controls.update(this.time.delta)
-		if (this.instance.position.y < 1) {
-			this.sendup()
-		}
-		// console.log(this.controls.object.position)
-
-		if (
-			this.controls.object.position.x > 7 &&
-			this.controls.object.position.x < 8 &&
-			this.controls.object.position.z > 2 &&
-			this.controls.object.position.z < 3 &&
-			!this.teleportInProgress
-		) {
-			this.teleportToEldia()
-		}
-		if (
-			this.controls.object.position.x > 0 &&
-			this.controls.object.position.x < 1 &&
-			this.controls.object.position.z > 9 &&
-			this.controls.object.position.z < 10 &&
-			!this.teleportInProgress
-		) {
-			this.teleportToSkills()
-		}
-		if (
-			this.controls.object.position.x > -14 &&
-			this.controls.object.position.x < -13 &&
-			this.controls.object.position.z > 9 &&
-			this.controls.object.position.z < 10 &&
-			!this.teleportInProgress
-		) {
-			this.teleportToRandom()
-		}
-		if (
-			this.controls.object.position.x > -6 &&
-			this.controls.object.position.x < -5 &&
-			this.controls.object.position.z > -8 &&
-			this.controls.object.position.z < -7 &&
-			!this.teleportInProgress
-		) {
-			this.teleportToSpace()
-		}
-		if (
-			this.controls.object.position.x > -15 &&
-			this.controls.object.position.x < -14 &&
-			this.controls.object.position.z > -3 &&
-			this.controls.object.position.z < -2 &&
-			!this.teleportInProgress
-		) {
-			this.teleportToFullFat()
-		}
+		// this.controls.update(this.time.delta)
+		// if (this.instance.position.y < 1) {
+		// 	this.sendup()
+		// }
+		// // console.log(this.controls.object.position)
+		// if (
+		// 	this.controls.object.position.x > 7 &&
+		// 	this.controls.object.position.x < 8 &&
+		// 	this.controls.object.position.z > 2 &&
+		// 	this.controls.object.position.z < 3 &&
+		// 	!this.teleportInProgress
+		// ) {
+		// 	this.teleportToEldia()
+		// }
+		// if (
+		// 	this.controls.object.position.x > 0 &&
+		// 	this.controls.object.position.x < 1 &&
+		// 	this.controls.object.position.z > 9 &&
+		// 	this.controls.object.position.z < 10 &&
+		// 	!this.teleportInProgress
+		// ) {
+		// 	this.teleportToSkills()
+		// }
+		// if (
+		// 	this.controls.object.position.x > -14 &&
+		// 	this.controls.object.position.x < -13 &&
+		// 	this.controls.object.position.z > 9 &&
+		// 	this.controls.object.position.z < 10 &&
+		// 	!this.teleportInProgress
+		// ) {
+		// 	this.teleportToRandom()
+		// }
+		// if (
+		// 	this.controls.object.position.x > -6 &&
+		// 	this.controls.object.position.x < -5 &&
+		// 	this.controls.object.position.z > -8 &&
+		// 	this.controls.object.position.z < -7 &&
+		// 	!this.teleportInProgress
+		// ) {
+		// 	this.teleportToSpace()
+		// }
+		// if (
+		// 	this.controls.object.position.x > -15 &&
+		// 	this.controls.object.position.x < -14 &&
+		// 	this.controls.object.position.z > -3 &&
+		// 	this.controls.object.position.z < -2 &&
+		// 	!this.teleportInProgress
+		// ) {
+		// 	this.teleportToFullFat()
+		// }
 	}
 }

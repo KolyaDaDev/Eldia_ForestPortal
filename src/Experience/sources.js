@@ -50,10 +50,31 @@ export default [
 		type: 'gltfModel',
 		path: 'models/nikoForest/forestOfNikoFinalMerge.glb',
 	},
-	// Matcaps
+
+	// character
 	{
-		name: 'blueMatCap',
-		type: 'texture',
-		path: 'textures/matCaps/blue.png',
+		name: 'Vanguard',
+		type: 'FBXModel',
+		path: 'models/character/Vanguard.fbx',
+	},
+	{
+		name: 'idle',
+		type: 'FBXModel',
+		path: 'models/character/WarriorIdle.fbx',
+	},
+	{
+		name: 'dance',
+		type: 'FBXModel',
+		path: 'models/character/dance.fbx',
+	},
+	{
+		name: 'run',
+		type: 'FBXModel',
+		path: 'models/character/run.fbx',
+	},
+	{
+		name: 'walk',
+		type: 'FBXModel',
+		path: 'models/character/walk.fbx',
 	},
 ]

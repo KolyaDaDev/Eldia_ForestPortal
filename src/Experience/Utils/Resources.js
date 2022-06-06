@@ -2,6 +2,8 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import EventEmitter from './EventEmitter.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
+
 import Experience from '../Experience'
 import gsap from 'gsap'
 export default class Resources extends EventEmitter {
@@ -91,6 +93,7 @@ export default class Resources extends EventEmitter {
 
 		this.loaders.dracoLoader = new DRACOLoader(this.loadingManager)
 		this.loaders.dracoLoader.setDecoderPath('/draco/')
+		this.loaders.FBXLoader = new FBXLoader()
 
 		this.loaders.gltfLoader = new GLTFLoader(this.loadingManager)
 
@@ -115,6 +118,10 @@ export default class Resources extends EventEmitter {
 				})
 			} else if (source.type === 'cubeTexture') {
 				this.loaders.cubeTextureLoader.load(source.path, (file) => {
+					this.sourceLoaded(source, file)
+				})
+			} else if (source.type === 'FBXModel') {
+				this.loaders.FBXLoader.load(source.path, (file) => {
 					this.sourceLoaded(source, file)
 				})
 			}

@@ -6,6 +6,9 @@ import SunMaterial from './shaderMaterials/SunMaterial.js'
 import ProjectPlane from './ProjectPlane.js'
 import PointsOfInterest from './PointsOfInterest'
 import Raycaster from '../Utils/Raycaster'
+import PostProcessing from './PostProcessing/PostProcessing'
+import TestCharacter2 from './characters/TestCharacter2'
+
 export default class Greyfield {
 	constructor() {
 		this.experience = new Experience()
@@ -13,6 +16,8 @@ export default class Greyfield {
 		this.resources = this.experience.resources
 		this.time = this.experience.time
 		this.camera = this.experience.camera
+		// this.postProcessing = new PostProcessing()
+		this.character = new TestCharacter2()
 
 		// Resource for landscape
 		this.resource = this.resources.items.forestOfNiko
@@ -64,27 +69,33 @@ export default class Greyfield {
 
 		// this.poi = new PointsOfInterest()
 		// instead of doing this could I not just use a raycaster and cause an html element to appear on screen?
-		this.raycaster = new Raycaster(
-			this.resource,
-			this.camera.controls.object.position
-		)
+		// this.raycaster = new Raycaster(
+		// 	this.resource,
+		// 	this.camera.controls.object.position
+		// )
 
 		// Methods
 		this.setModel()
 
-		//debug
+		// Debug
+		this.debug = this.experience.debug
+		if (this.debug.active) {
+			this.debugFolder = this.debug.ui.addFolder('landscape')
+		}
+		this.setDebug()
 	}
 
 	setModel() {
 		this.model = this.resource.scene
 		console.log(this.model)
-		this.model.scale.set(1, 1, 1)
-		this.model.position.y = 0
+		this.model.scale.set(10, 10, 10)
+		this.model.position.y = -9
 
 		// FIND MODELS
 		this.bakedModel = this.model.children.find((child) => child.name === 'baked')
 
 		this.seaMesh = this.model.children.find((child) => child.name === 'sea')
+		this.seaMesh.removeFromParent()
 
 		this.fireMesh = this.model.children.find(
 			(child) => child.name === 'firepitPlane001'
@@ -158,11 +169,23 @@ export default class Greyfield {
 		this.scene.add(this.model)
 	}
 
+	setDebug() {
+		if (this.debug.active) {
+			this.debugFolder
+				.add(this.model.position, 'y')
+				.min(-20)
+				.max(30)
+				.step(1)
+				.name('y model')
+		}
+	}
+
 	update() {
 		this.portalMaterial.update()
 		this.lakeMaterial.update()
 		this.sunMaterial.update()
 		// this.poi.update()
-		this.raycaster.update()
+		// this.raycaster.update()
+		// this.postProcessing.update()
 	}
 }
