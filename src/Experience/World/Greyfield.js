@@ -88,14 +88,24 @@ export default class Greyfield {
 	setModel() {
 		this.model = this.resource.scene
 		console.log(this.model)
-		this.model.scale.set(10, 10, 10)
-		this.model.position.y = -9
+		this.model.scale.set(15, 15, 15)
+		this.model.position.y = -11
 
 		// FIND MODELS
 		this.bakedModel = this.model.children.find((child) => child.name === 'baked')
 
 		this.seaMesh = this.model.children.find((child) => child.name === 'sea')
 		this.seaMesh.removeFromParent()
+		
+	
+		this.newSeaGeometry = new THREE.PlaneGeometry(1000, 1000, 128, 128)
+		this.newSeaMaterial = this.lakeMaterial.material
+		this.newSeaMesh = new THREE.Mesh(this.newSeaGeometry, this.newSeaMaterial)
+		this.newSeaMesh.rotation.x = -Math.PI * 0.5
+		this.newSeaMesh.position.y = -10
+		this.scene.add(this.newSeaMesh)
+
+
 
 		this.fireMesh = this.model.children.find(
 			(child) => child.name === 'firepitPlane001'
@@ -160,7 +170,7 @@ export default class Greyfield {
 		}
 
 		// MATERIALS
-		this.seaMesh.material = this.lakeMaterial.material
+		// this.seaMesh.material = this.lakeMaterial
 		this.fireMesh.material = this.sunMaterial.material
 		this.bakedModel.material = this.bakedMaterial
 		this.treeMed.material = this.treeLeavesMedMaterial
@@ -177,6 +187,25 @@ export default class Greyfield {
 				.max(30)
 				.step(1)
 				.name('y model')
+				this.debugFolder
+				.add(this.newSeaMesh.position, 'y')
+				.min(-200)
+				.max(300)
+				.step(0.1)
+				.name('y sea')
+
+				this.debugFolder
+				.add(this.newSeaMesh.position, 'x')
+				.min(-200)
+				.max(300)
+				.step(1)
+				.name('x sea')
+				this.debugFolder
+				.add(this.newSeaMesh.rotation, 'x')
+				.min(-200)
+				.max(300)
+				.step(1)
+				.name('x rotation')
 		}
 	}
 

@@ -3,13 +3,13 @@ import Experience from '../../Experience.js'
 import lakeVertex from '../../shaders/lake/vertex.glsl'
 import lakeFragment from '../../shaders/lake/fragment.glsl'
 
-export default class PortalMaterial {
+export default class LakeMaterial {
 	constructor() {
 		this.experience = new Experience()
 		this.time = this.experience.time
 		this.debugObject = {
-			depthColor: '#07255a',
-			surfaceColor: '#d0d8e6',
+			depthColor: '#186691',
+			surfaceColor: '#9bd8ff',
 		}
 		this.material = new THREE.ShaderMaterial({
 			vertexShader: lakeVertex,
@@ -17,19 +17,19 @@ export default class PortalMaterial {
 			uniforms: {
 				uTime: { value: 0 },
 
-				uBigWavesElevation: { value: 0 },
-				uBigWavesFrequency: { value: new THREE.Vector2(10, 9.403) },
-				uBigWavesSpeed: { value: 0.656 },
+				uBigWavesElevation: { value: 0.189 },
+				uBigWavesFrequency: { value: new THREE.Vector2(-0.2, 1) },
+				uBigWavesSpeed: { value:0.0005 },
 
-				uSmallWavesElevation: { value: 0.119 },
-				uSmallWavesFrequency: { value: 4.531 },
-				uSmallWavesSpeed: { value: 0.301 },
-				uSmallIterations: { value: 10 },
+				uSmallWavesElevation: { value: 0.15 },
+				uSmallWavesFrequency: { value: 4.005 },
+				uSmallWavesSpeed: { value: 0.0002 },
+				uSmallIterations: { value: 4 },
 
 				uDepthColor: { value: new THREE.Color(this.debugObject.depthColor) },
 				uSurfaceColor: { value: new THREE.Color(this.debugObject.surfaceColor) },
-				uColorOffset: { value: 0.065 },
-				uColorMultiplier: { value: 5 },
+				uColorOffset: { value: 0.08 },
+				uColorMultiplier: { value: -3.668 },
 			},
 		})
 
@@ -45,20 +45,20 @@ export default class PortalMaterial {
 		if (this.debug.active) {
 			this.debugFolder
 				.add(this.material.uniforms.uBigWavesElevation, 'value')
-				.min(0)
-				.max(1)
+				.min(-100)
+				.max(100)
 				.step(0.001)
 				.name('uBigWavesElevation')
 			this.debugFolder
 				.add(this.material.uniforms.uBigWavesFrequency.value, 'x')
-				.min(0)
-				.max(10)
+			.min(-100)
+				.max(100)
 				.step(0.001)
 				.name('uBigWavesFrequencyX')
 			this.debugFolder
 				.add(this.material.uniforms.uBigWavesFrequency.value, 'y')
-				.min(0)
-				.max(10)
+			.min(-100)
+				.max(100)
 				.step(0.001)
 				.name('uBigWavesFrequencyY')
 			this.debugFolder
@@ -70,8 +70,8 @@ export default class PortalMaterial {
 
 			this.debugFolder
 				.add(this.material.uniforms.uSmallWavesElevation, 'value')
-				.min(0)
-				.max(1)
+			.min(-100)
+				.max(100)
 				.step(0.001)
 				.name('uSmallWavesElevation')
 			this.debugFolder
@@ -101,8 +101,8 @@ export default class PortalMaterial {
 				.name('uColorOffset')
 			this.debugFolder
 				.add(this.material.uniforms.uColorMultiplier, 'value')
-				.min(0)
-				.max(10)
+			.min(-100)
+				.max(100)
 				.step(0.001)
 				.name('uColorMultiplier')
 			this.debugFolder.addColor(this.debugObject, 'depthColor').onChange(() => {

@@ -8,9 +8,9 @@ export default class BasicCharController {
 		this.experience = new Experience()
 		this.resources = this.experience.resources
 		this.vanguard = this.resources.items.Vanguard
-		console.log('character loaded!')
+	
 		this.idle = this.resources.items.idle
-		console.log(this.idle, 'idle')
+	
 		this.dance = this.resources.items.dance
 		this.run = this.resources.items.run
 		this.walk = this.resources.items.walk
@@ -21,7 +21,7 @@ export default class BasicCharController {
 	_Init(params) {
 		this._params = params
 		this._decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0)
-		this._acceleration = new THREE.Vector3(1, 0.25, 10.0)
+		this._acceleration = new THREE.Vector3(1, 0.25, 15.0)
 		this._velocity = new THREE.Vector3(0, 0, 0)
 		this._position = new THREE.Vector3()
 
@@ -32,21 +32,11 @@ export default class BasicCharController {
 		)
 
 		this._LoadModels()
-		// this._LoadJustMutant()
+	
 	}
 
-	_LoadJustMutant() {
-		this.vanguard.scale.setScalar(0.01)
-		this.vanguard.traverse((c) => {
-			c.castShadow = true
-		})
-
-		this._target = this.vanguard
-		this._params.scene.add(this._target)
-	}
 	_LoadModels() {
-		// const loader = new FBXLoader()
-		// // loader.setPath('')
+	
 
 		this.vanguard.scale.setScalar(0.1)
 		this.vanguard.traverse((c) => {
