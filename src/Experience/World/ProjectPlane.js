@@ -18,7 +18,7 @@ export default class ProjectPLane {
 			this.debugFolder = this.debug.ui.addFolder(debugName)
 		}
 
-		// this.setDebug()
+		this.setDebug()
 	}
 
 	setPlane() {
@@ -32,7 +32,7 @@ export default class ProjectPLane {
 		this.plane = new THREE.Mesh(this.geometry, this.material)
 		this.plane.name = this.planeName
 		console.log(this.plane.name)
-		this.plane.scale.set(0.6, 0.6, 0.6)
+		this.plane.scale.set(20, 20, 20)
 
 		this.scene.add(this.plane)
 
@@ -46,32 +46,32 @@ export default class ProjectPLane {
 		}
 	}
 
-	// setDebug() {
-	// 	if (this.debug.active) {
-	// 		this.debugFolder
-	// 			.add(this.plane.position, 'y')
-	// 			.min(0)
-	// 			.max(10)
-	// 			.step(0.1)
-	// 			.name('height')
-	// 		this.debugFolder
-	// 			.add(this.plane.rotation, 'y')
-	// 			.min(0)
-	// 			.max(10)
-	// 			.step(0.1)
-	// 			.name('rotation')
-	// 		this.debugFolder
-	// 			.add(this.plane.position, 'x')
-	// 			.min(-10)
-	// 			.max(10)
-	// 			.step(0.1)
-	// 			.name('pos x ')
-	// 		this.debugFolder
-	// 			.add(this.plane.position, 'z')
-	// 			.min(-50)
-	// 			.max(50)
-	// 			.step(0.1)
-	// 			.name('pos z')
-	// 	}
-	// }
+	setDebug() {
+		if (this.debug.active) {
+			this.debugFolder
+				.add(this.plane.position, 'y')
+				.min(-550)
+				.max(550)
+				.step(0.1)
+				.name('height')
+			this.debugFolder
+				.add(this.plane.rotation, 'y')
+				.min(-550)
+				.max(550)
+				.step(0.1)
+				.name('rotation')
+			this.debugFolder
+				.add(this.plane.position, 'x')
+				.min(-550)
+				.max(550)
+				.step(0.1)
+				.name('pos x ')
+			this.debugFolder
+				.add(this.plane.position, 'z')
+				.min(-550)
+				.max(550)
+				.step(0.1)
+				.name('pos z')
+		}
+	}
 }

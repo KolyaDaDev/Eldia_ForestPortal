@@ -17,19 +17,19 @@ export default class LakeMaterial {
 			uniforms: {
 				uTime: { value: 0 },
 
-				uBigWavesElevation: { value: 0.189 },
-				uBigWavesFrequency: { value: new THREE.Vector2(-0.2, 1) },
-				uBigWavesSpeed: { value:0.0005 },
+				uBigWavesElevation: { value: 7.564 },
+				uBigWavesFrequency: { value: new THREE.Vector2(34.114, 1) },
+				uBigWavesSpeed: { value: 0.665 },
 
 				uSmallWavesElevation: { value: 0.15 },
 				uSmallWavesFrequency: { value: 4.005 },
-				uSmallWavesSpeed: { value: 0.0002 },
+				uSmallWavesSpeed: { value: 2.446 },
 				uSmallIterations: { value: 4 },
 
 				uDepthColor: { value: new THREE.Color(this.debugObject.depthColor) },
 				uSurfaceColor: { value: new THREE.Color(this.debugObject.surfaceColor) },
-				uColorOffset: { value: 0.08 },
-				uColorMultiplier: { value: -3.668 },
+				uColorOffset: { value: 0.194 },
+				uColorMultiplier: { value: 0.184 },
 			},
 		})
 
@@ -51,13 +51,13 @@ export default class LakeMaterial {
 				.name('uBigWavesElevation')
 			this.debugFolder
 				.add(this.material.uniforms.uBigWavesFrequency.value, 'x')
-			.min(-100)
+				.min(-100)
 				.max(100)
 				.step(0.001)
 				.name('uBigWavesFrequencyX')
 			this.debugFolder
 				.add(this.material.uniforms.uBigWavesFrequency.value, 'y')
-			.min(-100)
+				.min(-100)
 				.max(100)
 				.step(0.001)
 				.name('uBigWavesFrequencyY')
@@ -70,7 +70,7 @@ export default class LakeMaterial {
 
 			this.debugFolder
 				.add(this.material.uniforms.uSmallWavesElevation, 'value')
-			.min(-100)
+				.min(-100)
 				.max(100)
 				.step(0.001)
 				.name('uSmallWavesElevation')
@@ -101,7 +101,7 @@ export default class LakeMaterial {
 				.name('uColorOffset')
 			this.debugFolder
 				.add(this.material.uniforms.uColorMultiplier, 'value')
-			.min(-100)
+				.min(-100)
 				.max(100)
 				.step(0.001)
 				.name('uColorMultiplier')

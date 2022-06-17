@@ -40,7 +40,7 @@ export default [
 	{
 		name: 'skillsTexture',
 		type: 'texture',
-		path: 'textures/skills/skills.jpg',
+		path: 'textures/skills/skills.png',
 	},
 
 	// models
