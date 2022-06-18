@@ -9,7 +9,7 @@ export default class PortalMaterial {
 		this.time = this.experience.time
 		this.debugObject = {
 			colorStart: '#c6c6ff',
-			colorEnd: '#497b24',
+			colorEnd: '#1d9bf0',
 		}
 		this.material = new THREE.ShaderMaterial({
 			uniforms: {

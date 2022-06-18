@@ -6,8 +6,8 @@ import SunMaterial from './shaderMaterials/SunMaterial.js'
 import ProjectPlane from './ProjectPlane.js'
 import PointsOfInterest from './PointsOfInterest'
 import Raycaster from '../Utils/Raycaster'
-import PostProcessing from './PostProcessing/PostProcessing'
 import TestCharacter2 from './characters/TestCharacter2'
+import PortalOverlay from './PortalOverlay'
 
 export default class Greyfield {
 	constructor() {
@@ -66,6 +66,8 @@ export default class Greyfield {
 			'fullPlane',
 			'fullPlane'
 		)
+
+		this.smokeOverlay = new PortalOverlay('smoke', 'smoke1')
 
 		// this.poi = new PointsOfInterest()
 		// instead of doing this could I not just use a raycaster and cause an html element to appear on screen?
@@ -211,6 +213,7 @@ export default class Greyfield {
 		this.portalMaterial.update()
 		this.lakeMaterial.update()
 		this.sunMaterial.update()
+		this.smokeOverlay.update()
 		// this.poi.update()
 		// this.raycaster.update()
 		// this.postProcessing.update()

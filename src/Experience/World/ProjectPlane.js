@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import Experience from '../Experience'
 import objectPositions from './objectPositions'
+import Fragment from '../shaders/imageShader/fragment.glsl'
+import Vertex from '../shaders/imageShader/vertex.glsl'
 export default class ProjectPLane {
 	constructor(texture, debugName, planeName) {
 		this.experience = new Experience()
@@ -22,12 +24,13 @@ export default class ProjectPLane {
 	}
 
 	setPlane() {
-		this.geometry = new THREE.CircleGeometry(2, 20)
-		this.material = new THREE.MeshBasicMaterial({
-			map: this.texture,
-			side: THREE.DoubleSide,
-			// not this, trying to rid whiteness
-			// reflectivity: 0,
+		this.geometry = new THREE.CircleGeometry(1.9, 20)
+		this.material = new THREE.ShaderMaterial({
+			vertexShader: Vertex,
+			fragmentShader: Fragment,
+			uniforms: {
+				uTexture: { value: this.texture },
+			},
 		})
 		this.plane = new THREE.Mesh(this.geometry, this.material)
 		this.plane.name = this.planeName

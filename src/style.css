@@ -6,6 +6,8 @@
 	box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;1,200&display=swap');
+
 html,
 body {
 	background: #000000;
@@ -71,7 +73,10 @@ body {
 	justify-content: space-evenly;
 	align-items: center;
 	color: #fff;
-	font-family: minecraft;
+
+	font-family: 'Nunito', sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
 
 	background-color: rgba(0, 0, 0, 0.787);
 	opacity: 0;
