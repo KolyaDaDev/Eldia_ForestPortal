@@ -4,12 +4,18 @@ import Fragment from '../shaders/smokePortal/fragment.glsl'
 import Vertex from '../shaders/smokePortal/vertex.glsl'
 
 export default class Plane {
-	constructor(debugName, planeName) {
+	constructor(debugName, planeName, posX, posY, posZ, rotation, R, G, B) {
 		this.experience = new Experience()
 		this.scene = this.experience.scene
 		this.time = this.experience.time
-
 		this.planeName = planeName
+		this.posX = posX
+		this.posY = posY
+		this.posZ = posZ
+		this.rotation = rotation
+		this.r = R
+		this.g = G
+		this.b = B
 
 		// instantiate plane
 		this.setPlane()
@@ -33,9 +39,9 @@ export default class Plane {
 			uniforms: {
 				uTime: { value: 0 },
 				uAlpha: { value: 0.32 },
-				uRedVal: { value: 0.9 },
-				uGreenVal: { value: 0.3 },
-				uBlueVal: { value: 0 },
+				uRedVal: { value: this.r },
+				uGreenVal: { value: this.g },
+				uBlueVal: { value: this.b },
 				uSpeedColorChange: { value: 0.0016 },
 			},
 
@@ -44,8 +50,10 @@ export default class Plane {
 
 		this.plane = new THREE.Mesh(this.geometry, this.material)
 		this.plane.name = this.planeName
-		this.plane.position.set(-158, 39, -238)
-		this.plane.rotation.y = 6.6
+
+		this.plane.position.set(this.posX, this.posY, this.posZ)
+		// this.plane.position.set(-158, 39, -238)
+		this.plane.rotation.y = this.rotation
 		this.plane.scale.set(20, 20, 20)
 
 		console.log(this.plane.name)

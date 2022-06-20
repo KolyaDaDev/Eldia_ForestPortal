@@ -67,7 +67,50 @@ export default class Greyfield {
 			'fullPlane'
 		)
 
-		this.smokeOverlay = new PortalOverlay('smoke', 'smoke1')
+		this.spaceOverlay = new PortalOverlay(
+			'spaceOverlay',
+			'spaceOverlay',
+			-158,
+			39,
+			-238,
+			6.6,
+			0.9,
+			0.3,
+			0
+		)
+		this.eldiaOverlay = new PortalOverlay(
+			'eldiaOverlay',
+			'eldiaOverlay',
+			215,
+			40,
+			63.8,
+			4.7,
+			0.6,
+			0.3,
+			0.7
+		)
+		this.skillsOverlay = new PortalOverlay(
+			'skillsOverlay',
+			'skillsOverlay',
+			18,
+			40,
+			298,
+			9.4,
+			0.5,
+			0.7,
+			1.0
+		)
+		this.fullOverlay = new PortalOverlay(
+			'fullOverlay',
+			'fullOverlay',
+			-430,
+			40,
+			-61,
+			1.6,
+			0.5,
+			0.5,
+			0.5
+		)
 
 		// this.poi = new PointsOfInterest()
 		// instead of doing this could I not just use a raycaster and cause an html element to appear on screen?
@@ -213,7 +256,10 @@ export default class Greyfield {
 		this.portalMaterial.update()
 		this.lakeMaterial.update()
 		this.sunMaterial.update()
-		this.smokeOverlay.update()
+		this.spaceOverlay.update()
+		this.eldiaOverlay.update()
+		this.skillsOverlay.update()
+		this.fullOverlay.update()
 		// this.poi.update()
 		// this.raycaster.update()
 		// this.postProcessing.update()

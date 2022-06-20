@@ -24,7 +24,7 @@ export default [
 		name: 'eldiaPlane',
 		x: 216,
 		y: 40,
-		z: 60,
+		z: 63.8,
 		rotation: 4.7,
 	},
 ]
