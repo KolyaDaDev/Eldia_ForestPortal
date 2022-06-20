@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
-import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js'
+
 import gsap from 'gsap'
 
 export default class Camera {
@@ -13,6 +13,7 @@ export default class Camera {
 		//// added for passing to ray
 		// this.resource = this.experience.resources.forestOfNiko
 
+		console.log(this.character)
 		// instantiate raycaster
 
 		this.setInstance()
@@ -44,55 +45,19 @@ export default class Camera {
 		this.scene.add(this.instance)
 	}
 
-	setControls() {
-		// properties for controls
-
-		this.controls = new FirstPersonControls(this.instance, document)
-
-		this.controls.movementSpeed = 0.003
-		this.controls.lookSpeed = 0.00008
-		// this.controls.heightCoef = 0.2
-	}
-
-	teleportToEldia() {
-		console.log('teleported!')
-		window.open('https://peaceful-inlet-40638.herokuapp.com/', '_self')
-		this.teleportInProgress = true
-	}
-	teleportToSkills() {
-		console.log('teleported!')
-		window.open('https://www.linkedin.com/in/nick-gillham-3bb6971a1/', '_self')
-		this.teleportInProgress = true
-	}
-	teleportToRandom() {
-		console.log('teleported!')
-		window.open('https://twitter.com/eth_nikodev', '_self')
-		this.teleportInProgress = true
-	}
-	teleportToFullFat() {
-		console.log('teleported!')
-		window.open('https://fullfatgrappling.netlify.app', '_self')
-		this.teleportInProgress = true
-	}
-	teleportToSpace() {
-		console.log('teleported!')
-		window.open('https://space-portfolio-project.netlify.app', '_self')
-		this.teleportInProgress = true
-	}
-
 	resize() {
 		this.instance.aspect = this.sizes.width / this.sizes.height
 		this.instance.updateProjectionMatrix()
 		// this.controls.handleResize()
 	}
 
-	sendup() {
-		gsap.to(this.instance.position, {
-			duration: 1,
-			ease: 'power2.inOut',
-			y: '+=1.1',
-		})
-	}
+	// sendup() {
+	// 	gsap.to(this.instance.position, {
+	// 		duration: 1,
+	// 		ease: 'power2.inOut',
+	// 		y: '+=1.1',
+	// 	})
+	// }
 
 	setDebug() {
 		if (this.debug.active) {

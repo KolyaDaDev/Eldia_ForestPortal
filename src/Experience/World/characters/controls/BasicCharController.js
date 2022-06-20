@@ -8,13 +8,13 @@ export default class BasicCharController {
 		this.experience = new Experience()
 		this.resources = this.experience.resources
 		this.vanguard = this.resources.items.Vanguard
-	
+
 		this.idle = this.resources.items.idle
-	
+
 		this.dance = this.resources.items.dance
 		this.run = this.resources.items.run
 		this.walk = this.resources.items.walk
-
+		this.teleportInProgress = false
 		this._Init(params)
 	}
 
@@ -32,12 +32,9 @@ export default class BasicCharController {
 		)
 
 		this._LoadModels()
-	
 	}
 
 	_LoadModels() {
-	
-
 		this.vanguard.scale.setScalar(0.1)
 		this.vanguard.traverse((c) => {
 			c.castShadow = true
@@ -108,6 +105,32 @@ export default class BasicCharController {
 		// 	})
 		// })
 	}
+	teleportToEldia() {
+		console.log('teleported!')
+		window.open('https://peaceful-inlet-40638.herokuapp.com/', '_self')
+		this.teleportInProgress = true
+	}
+	teleportToSkills() {
+		console.log('teleported!')
+		window.open('https://www.linkedin.com/in/nick-gillham-3bb6971a1/', '_self')
+		this.teleportInProgress = true
+	}
+	teleportToRandom() {
+		console.log('teleported!')
+		window.open('https://twitter.com/kolyathedev', '_self')
+		this.teleportInProgress = true
+	}
+	teleportToFullFat() {
+		console.log('teleported!')
+		window.open('https://fullfatgrappling.netlify.app', '_self')
+		this.teleportInProgress = true
+	}
+	teleportToSpace() {
+		console.log('teleported!')
+		window.open('https://space-portfolio-project.netlify.app', '_self')
+		this.teleportInProgress = true
+	}
+
 	get Position() {
 		return this._position
 	}
@@ -193,6 +216,49 @@ export default class BasicCharController {
 		controlObject.position.add(sideways)
 
 		this._position.copy(controlObject.position)
+		if (
+			this._position.x > 215 &&
+			this._position.x < 218 &&
+			this._position.z > 60 &&
+			this._position.z < 65 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToEldia()
+		} else if (
+			this._position.x > -161 &&
+			this._position.x < -158 &&
+			this._position.z > -240 &&
+			this._position.z < -238 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToSpace()
+		} else if (
+			this._position.x > -435 &&
+			this._position.x < -428 &&
+			this._position.z > -65 &&
+			this._position.z < -58 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToFullFat()
+		} else if (
+			this._position.x > 15 &&
+			this._position.x < 22 &&
+			this._position.z > 295 &&
+			this._position.z < 302 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToSkills()
+		} else if (
+			this._position.x > -400 &&
+			this._position.x < -396 &&
+			this._position.z > 276 &&
+			this._position.z < 283 &&
+			!this.teleportInProgress
+		) {
+			this.teleportToRandom()
+		}
+		console.log(this._position)
+		// console.log(this._position)
 
 		if (this._mixer) {
 			this._mixer.update(timeInSeconds)
