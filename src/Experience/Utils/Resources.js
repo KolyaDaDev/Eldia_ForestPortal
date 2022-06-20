@@ -84,6 +84,7 @@ export default class Resources extends EventEmitter {
         }
     `,
 		})
+
 		this.overlay = new THREE.Mesh(this.overlayGeo, this.overlayMat)
 		this.scene.add(this.overlay)
 	}

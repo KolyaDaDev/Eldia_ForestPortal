@@ -3,6 +3,7 @@ import BasicCharacterControllerInput from './BasicCharControllerInput.js'
 import BasicCharControlProxy from './BasicCharControlProxy'
 import CharacterFSM from './CharacterFSM.js'
 import Experience from '../../../Experience'
+
 export default class BasicCharController {
 	constructor(params) {
 		this.experience = new Experience()
@@ -14,7 +15,10 @@ export default class BasicCharController {
 		this.dance = this.resources.items.dance
 		this.run = this.resources.items.run
 		this.walk = this.resources.items.walk
+
+		// telportation
 		this.teleportInProgress = false
+
 		this._Init(params)
 	}
 
@@ -30,7 +34,6 @@ export default class BasicCharController {
 		this._stateMachine = new CharacterFSM(
 			new BasicCharControlProxy(this._animations)
 		)
-
 		this._LoadModels()
 	}
 
@@ -107,8 +110,24 @@ export default class BasicCharController {
 	}
 	teleportToEldia() {
 		console.log('teleported!')
-		window.open('https://peaceful-inlet-40638.herokuapp.com/', '_self')
 		this.teleportInProgress = true
+		this.teleportScreen = document.querySelector('.teleportScreen')
+
+		this.teleportScreen.style.transform = `scaleX(1)`
+
+		// this.TeleportOverlay = new TeleportOverlay(
+		// 	'TeleportOverlay',
+		// 	'TeleportOverlay'
+		// )
+		// console.log('overlay added!')
+
+		// gsap.to(this.TeleportOverlay.material.uniforms.uAlpha, {
+		// 	duration: 3,
+		// 	value: 1,
+		// })
+		setTimeout(() => {
+			window.open('https://peaceful-inlet-40638.herokuapp.com/', '_self')
+		}, 2000)
 	}
 	teleportToSkills() {
 		console.log('teleported!')
@@ -257,8 +276,6 @@ export default class BasicCharController {
 		) {
 			this.teleportToRandom()
 		}
-		console.log(this._position)
-		// console.log(this._position)
 
 		if (this._mixer) {
 			this._mixer.update(timeInSeconds)
