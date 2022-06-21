@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
+import ChangeEnvMap from './interactive/ChangeEnvMap'
 
 export default class Environment {
 	constructor() {
@@ -18,8 +19,24 @@ export default class Environment {
 		}
 		this.setSunLight()
 		this.setAmbientLight()
-		this.setEnvironmentMap()
+		// this.setEnvironmentMap()
+		this.setEnvMap2()
 		this.setDebug()
+
+		this.changeButton = document.querySelector('.changeEnv')
+		this.changeButton.addEventListener('click', () => {
+			switch (this.currentEnv) {
+				case 'space':
+					this.setEnvironmentMap()
+					break
+				case 'desert':
+					this.setEnvMap2()
+					break
+				default:
+					break
+			}
+		})
+		// this.changeEnvMap = new ChangeEnvMap()
 	}
 
 	setSunLight() {
@@ -37,9 +54,9 @@ export default class Environment {
 
 	setEnvironmentMap() {
 		this.environmentMap = {}
-		this.environmentMap.intensity = 0.4
 		this.environmentMap.texture = this.resources.items.environmentMapTexture
 		this.environmentMap.texture.encoding = THREE.sRGBEncoding
+		this.environmentMap.intensity = 1
 
 		this.scene.environment = this.environmentMap.texture
 		this.scene.background = this.environmentMap.texture
@@ -57,6 +74,32 @@ export default class Environment {
 			})
 		}
 		this.environmentMap.updateMaterials()
+
+		this.currentEnv = 'desert'
+	}
+
+	setEnvMap2() {
+		this.envMap2 = {}
+		this.envMap2.texture = this.resources.items.envMap2Texture
+		this.envMap2.texture.encoding = THREE.sRGBEncoding
+		this.envMap2.intensity = 1
+		this.scene.environment = this.envMap2.texture
+		this.scene.background = this.envMap2.texture
+
+		this.envMap2.updateMaterials = () => {
+			this.scene.traverse((child) => {
+				if (
+					child instanceof THREE.Mesh &&
+					child.material instanceof THREE.MeshStandardMaterial
+				) {
+					child.material.envMap = this.envMap2.texture
+					child.material.envMapIntensity = this.envMap2.intensity
+					child.matierla.needsUpdate = true
+				}
+			})
+		}
+
+		this.currentEnv = 'space'
 	}
 
 	setDebug() {

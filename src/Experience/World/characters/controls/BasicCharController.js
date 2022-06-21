@@ -257,7 +257,7 @@ export default class BasicCharController {
 		) {
 			this.teleportToRandom()
 		}
-		console.log(this._position)
+
 		// console.log(this._position)
 
 		if (this._mixer) {
