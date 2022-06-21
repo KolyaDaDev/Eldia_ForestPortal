@@ -36,7 +36,6 @@ export default class Environment {
 					break
 			}
 		})
-		// this.changeEnvMap = new ChangeEnvMap()
 	}
 
 	setSunLight() {
@@ -135,12 +134,12 @@ export default class Environment {
 				.step(0.001)
 
 			this.debugFolder
-				.add(this.environmentMap, 'intensity')
+				.add(this.envMap2, 'intensity')
 				.name('envMapIntensity')
 				.min(0)
-				.max(4)
+				.max(1)
 				.step(0.001)
-				.onChange(this.environmentMap.updateMaterials)
+				.onChange(this.envMap2.updateMaterials)
 
 			this.debugFolder.addColor(this.debugObject, 'ALight').onChange(() => {
 				this.ambientLight.color.set(this.debugObject.ALight)

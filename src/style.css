@@ -38,6 +38,7 @@ body {
 	justify-content: center;
 	font-family: 'Nunito', sans-serif;
 	color: rgb(255, 250, 250);
+	display: none;
 }
 
 #form-wrapper {

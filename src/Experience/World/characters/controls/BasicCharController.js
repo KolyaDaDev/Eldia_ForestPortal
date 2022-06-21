@@ -3,6 +3,7 @@ import BasicCharacterControllerInput from './BasicCharControllerInput.js'
 import BasicCharControlProxy from './BasicCharControlProxy'
 import CharacterFSM from './CharacterFSM.js'
 import Experience from '../../../Experience'
+import Physics from '../../physics/Physics'
 
 export default class BasicCharController {
 	constructor(params) {
@@ -18,6 +19,9 @@ export default class BasicCharController {
 
 		// telportation
 		this.teleportInProgress = false
+
+		// char physics
+		this.physicsWorld = new Physics()
 
 		this._Init(params)
 	}
@@ -276,6 +280,8 @@ export default class BasicCharController {
 		) {
 			this.teleportToRandom()
 		}
+
+		this.physicsWorld.update(this._position)
 
 		if (this._mixer) {
 			this._mixer.update(timeInSeconds)

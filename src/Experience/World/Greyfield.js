@@ -44,6 +44,8 @@ export default class Greyfield {
 			wireframe: true,
 		})
 
+		// Physics
+
 		// instantiations
 
 		this.spacePlane = new ProjectPlane(
