@@ -13,7 +13,6 @@ export default class Camera {
 		//// added for passing to ray
 		// this.resource = this.experience.resources.forestOfNiko
 
-		console.log(this.character)
 		// instantiate raycaster
 
 		this.setInstance()

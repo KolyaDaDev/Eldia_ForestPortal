@@ -11,6 +11,18 @@ export default [
 			'textures/environmentMap/nz.png',
 		],
 	},
+	{
+		name: 'envMap2Texture',
+		type: 'cubeTexture',
+		path: [
+			'textures/envMap2/px.jpg',
+			'textures/envMap2/nx.jpg',
+			'textures/envMap2/py.jpg',
+			'textures/envMap2/ny.jpg',
+			'textures/envMap2/pz.jpg',
+			'textures/envMap2/nz.jpg',
+		],
+	},
 	// {
 	// 	name: 'forestMerged',
 	// 	type: 'gltfModel',
