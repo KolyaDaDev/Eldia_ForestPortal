@@ -18,12 +18,12 @@ export default class Greyfield {
 		this.character = new TestCharacter2()
 
 		// Resource for landscape
-		this.resource = this.resources.items.modelForBake
-		// this.bakedTexture = this.resources.items.bakedTexture
-		// this.bakedTexture.flipY = false
-		// this.bakedTexture.encoding = THREE.sRGBEncoding
-		// this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
-		this.resourceForMaterial = this.resources.items.modelForMaterial
+		this.resourceFloor = this.resources.items.floor
+		this.bakedTexture = this.resources.items.bakedTexture
+		this.bakedTexture.flipY = false
+		this.bakedTexture.encoding = THREE.sRGBEncoding
+		this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
+		this.resourceGreenery = this.resources.items.greenery
 		this.resourceArrows = this.resources.items.arrows
 		this.resourceSigns = this.resources.items.signs
 
@@ -86,6 +86,18 @@ export default class Greyfield {
 			0.7,
 			1.0
 		)
+
+		this.instOverlay = new PortalOverlay(
+			'instOverlay',
+			'instOverlay',
+			-58.1,
+			11.8,
+			96.2,
+			4.5,
+			0.9,
+			0.6,
+			0.8
+		)
 		// this.rmjOverlay = new PortalOverlay(
 		// 	'rmjOverlay',
 		// 	'rmjOverlay',
@@ -117,17 +129,18 @@ export default class Greyfield {
 	}
 
 	setModel() {
-		this.model = this.resource.scene
+		this.model = this.resourceFloor.scene
 		console.log(this.model)
 		this.model.scale.set(10, 10, 10)
 
-		// this.model.traverse((c) => {
-		// 	if (c instanceof THREE.Mesh) {
-		// 		c.material = this.bakedMaterial
-		// 	}
-		// })
+		this.model.traverse((c) => {
+			if (c instanceof THREE.Mesh) {
+				c.material = this.bakedMaterial
+			}
+		})
 		this.scene.add(this.model)
-		this.model2 = this.resourceForMaterial.scene
+		this.model2 = this.resourceGreenery.scene
+
 		console.log(this.model2)
 		this.model2.scale.set(10, 10, 10)
 		this.scene.add(this.model2)
@@ -136,6 +149,18 @@ export default class Greyfield {
 		this.modelSigns = this.resourceSigns.scene
 		this.modelArrows.scale.set(10, 10, 10)
 		this.modelSigns.scale.set(10, 10, 10)
+		this.modelArrows.traverse((c) => {
+			if (c instanceof THREE.Mesh) {
+				c.material = this.bakedMaterial
+			}
+		})
+
+		this.modelSigns.traverse((c) => {
+			if (c instanceof THREE.Mesh) {
+				c.material = this.bakedMaterial
+			}
+		})
+
 		this.scene.add(this.modelSigns)
 
 		this.scene.add(this.modelArrows)
@@ -241,6 +266,7 @@ export default class Greyfield {
 		// this.spaceOverlay.update()
 		// this.eldiaOverlay.update()
 		this.stpOverlay.update()
+		this.instOverlay.update()
 		// this.fullOverlay.update()
 		// this.poi.update()
 		// this.raycaster.update()

@@ -133,17 +133,17 @@ export default class BasicCharController {
 			window.open('https://questofkolya.herokuapp.com', '_self')
 		}, 2000)
 	}
-	teleportToSkills() {
+	teleportToStp() {
 		console.log('teleported!')
 		window.open('https://staythepath.herokuapp.com', '_self')
 		this.teleportInProgress = true
 	}
-	teleportToRandom() {
+	teleportToInstagram() {
 		console.log('teleported!')
 		window.open('https://www.instagram.com/kolyathedev/', '_self')
 		this.teleportInProgress = true
 	}
-	teleportToFullFat() {
+	teleportToRmj() {
 		console.log('teleported!')
 		window.open('https://roastmyjutsu.herokuapp.com/', '_self')
 		this.teleportInProgress = true
@@ -240,45 +240,45 @@ export default class BasicCharController {
 
 		this._position.copy(controlObject.position)
 		if (
-			this._position.x > 215 &&
-			this._position.x < 218 &&
-			this._position.z > 60 &&
-			this._position.z < 65 &&
+			this._position.x > 36 &&
+			this._position.x < 38 &&
+			this._position.z > 112 &&
+			this._position.z < 114 &&
 			!this.teleportInProgress
 		) {
 			this.teleportToEldia()
 		} else if (
-			this._position.x > -161 &&
-			this._position.x < -158 &&
-			this._position.z > -240 &&
-			this._position.z < -238 &&
+			this._position.x > -112.5 &&
+			this._position.x < -114 &&
+			this._position.z > -34 &&
+			this._position.z < -30 &&
 			!this.teleportInProgress
 		) {
 			this.teleportToSpace()
 		} else if (
-			this._position.x > -435 &&
-			this._position.x < -428 &&
-			this._position.z > -65 &&
-			this._position.z < -58 &&
+			this._position.x > 115 &&
+			this._position.x < 117 &&
+			this._position.z > 29 &&
+			this._position.z < 33 &&
 			!this.teleportInProgress
 		) {
-			this.teleportToFullFat()
+			this.teleportToRmj()
 		} else if (
-			this._position.x > 15 &&
-			this._position.x < 22 &&
-			this._position.z > 295 &&
-			this._position.z < 302 &&
+			this._position.x > -98 &&
+			this._position.x < -94 &&
+			this._position.z > -118 &&
+			this._position.z < -114 &&
 			!this.teleportInProgress
 		) {
-			this.teleportToSkills()
+			this.teleportToStp()
 		} else if (
-			this._position.x > -400 &&
-			this._position.x < -396 &&
-			this._position.z > 276 &&
-			this._position.z < 283 &&
+			this._position.x > -60 &&
+			this._position.x < -56 &&
+			this._position.z > 94 &&
+			this._position.z < 98 &&
 			!this.teleportInProgress
 		) {
-			this.teleportToRandom()
+			this.teleportToInstagram()
 		}
 
 		// this.physicsWorld.update(this._position)

@@ -12,11 +12,11 @@ export default [
 		],
 	},
 
-	// {
-	// 	name: 'bakedTexture',
-	// 	type: 'texture',
-	// 	path: 'models/nikoForest/baked.jpg',
-	// },
+	{
+		name: 'bakedTexture',
+		type: 'texture',
+		path: 'models/nikoForest/BAKED.jpg',
+	},
 
 	{
 		name: 'spaceTexture',
@@ -42,31 +42,31 @@ export default [
 	// models
 
 	{
-		name: 'modelForBake',
+		name: 'floor',
 		type: 'gltfModel',
-		path: 'models/nikoForest/modelForBake.glb',
+		path: 'models/nikoForest/FLOOR.glb',
 	},
 
 	{
-		name: 'modelForMaterial',
+		name: 'greenery',
 		type: 'gltfModel',
-		path: 'models/nikoForest/modelForMaterial.glb',
+		path: 'models/nikoForest/GREENERY.glb',
 	},
 
 	// {
-	// 	name: 'logs',
+	// 	name: 'LOGS',
 	// 	type: 'gltfModel',
-	// 	path: 'models/nikoForest/logs.glb',
+	// 	path: 'models/nikoForest/LOGS.glb',
 	// },
 	{
 		name: 'arrows',
 		type: 'gltfModel',
-		path: 'models/nikoForest/arrows.glb',
+		path: 'models/nikoForest/ARROWS.glb',
 	},
 	{
 		name: 'signs',
 		type: 'gltfModel',
-		path: 'models/nikoForest/signs.glb',
+		path: 'models/nikoForest/SIGNS.glb',
 	},
 	// character
 	{
