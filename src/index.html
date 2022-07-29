@@ -3,44 +3,25 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<style></style>
+
 		<title>Kolya's Portfolio</title>
 	</head>
 	<body>
 		<canvas class="webgl"></canvas>
-		<div class="changeEnv">
-			<div id="form-wrapper">
-				<form action="/p/quote.php" method="GET">
-					<h1 id="form-title"></h1>
-					<div id="debt-amount-slider">
-						<input type="radio" name="debt-amount" id="1" value="1" required />
-						<label for="1" data-debt-amount="< Outside Earth"></label>
-						<input type="radio" name="debt-amount" id="2" value="2" required />
-						<label for="2" data-debt-amount="Arid Desert"></label>
-						<input type="radio" name="debt-amount" id="3" value="3" required />
-						<label for="3" data-debt-amount="Omega Canis"></label>
-						<input type="radio" name="debt-amount" id="4" value="4" required />
-						<label for="4" data-debt-amount="$50k-100k"></label>
-						<input type="radio" name="debt-amount" id="5" value="5" required />
-						<label for="5" data-debt-amount="$100k+"></label>
-						<div id="debt-amount-pos"></div>
-					</div>
-				</form>
-			</div>
-		</div>
 		<div class="loadingText">Loading...</div>
 		<div class="infoBox"></div>
 		<div class="loading-bar"></div>
 		<div class="teleportScreen"></div>
 		<div class="instructions visible">
-			<h2>Some kind of warm hearted greeting...</h2>
+			<h2>Hey, welcome to Nick's portfolio</h2>
 			<ul style="list-style: none; text-align: center">
-				<li>W to go forward 🚀</li>
+				<li>W to go forward (hold shift + W to run)🚀</li>
 				<li>S to go backward 🤚</li>
 				<li>A & D to turn around 🐕</li>
-				<li>Go through portals to teleport to projects ☄️</li>
+				<li>Space to boogie 💃</li>
+				<li><strong> Go through portals to teleport to projects ☄️ </strong></li>
 			</ul>
-			<div class="playOuter"><h5 id="play">Play</h5></div>
+			<div class="playOuter"><h5 id="play" class="hide">Play</h5></div>
 		</div>
 	</body>
 </html>

@@ -35,7 +35,7 @@ export default class ProjectPLane {
 		this.plane = new THREE.Mesh(this.geometry, this.material)
 		this.plane.name = this.planeName
 		console.log(this.plane.name)
-		this.plane.scale.set(20, 20, 20)
+		this.plane.scale.set(5, 5, 5)
 
 		this.scene.add(this.plane)
 

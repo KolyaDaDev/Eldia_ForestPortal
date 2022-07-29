@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
-import ChangeEnvMap from './interactive/ChangeEnvMap'
 
 export default class Environment {
 	constructor() {
@@ -18,24 +17,24 @@ export default class Environment {
 			this.debugFolder = this.debug.ui.addFolder('environment')
 		}
 		this.setSunLight()
-		this.setAmbientLight()
+		// this.setAmbientLight()
 		// this.setEnvironmentMap()
 		this.setEnvMap2()
 		this.setDebug()
 
-		this.changeButton = document.querySelector('.changeEnv')
-		this.changeButton.addEventListener('click', () => {
-			switch (this.currentEnv) {
-				case 'space':
-					this.setEnvironmentMap()
-					break
-				case 'desert':
-					this.setEnvMap2()
-					break
-				default:
-					break
-			}
-		})
+		// this.changeButton = document.querySelector('.changeEnv')
+		// this.changeButton.addEventListener('click', () => {
+		// 	switch (this.currentEnv) {
+		// 		case 'space':
+		// 			this.setEnvironmentMap()
+		// 			break
+		// 		case 'desert':
+		// 			this.setEnvMap2()
+		// 			break
+		// 		default:
+		// 			break
+		// 	}
+		// })
 	}
 
 	setSunLight() {
@@ -46,36 +45,10 @@ export default class Environment {
 		this.scene.add(this.sunLight)
 	}
 
-	setAmbientLight() {
-		this.ambientLight = new THREE.AmbientLight(0x2424f9, 0.8)
-		this.scene.add(this.ambientLight)
-	}
-
-	setEnvironmentMap() {
-		this.environmentMap = {}
-		this.environmentMap.texture = this.resources.items.environmentMapTexture
-		this.environmentMap.texture.encoding = THREE.sRGBEncoding
-		this.environmentMap.intensity = 1
-
-		this.scene.environment = this.environmentMap.texture
-		this.scene.background = this.environmentMap.texture
-
-		this.environmentMap.updateMaterials = () => {
-			this.scene.traverse((child) => {
-				if (
-					child instanceof THREE.Mesh &&
-					child.material instanceof THREE.MeshStandardMaterial
-				) {
-					child.material.envMap = this.environmentMap.texture
-					child.material.envMapIntensity = this.environmentMap.intensity
-					child.material.needsUpdate = true
-				}
-			})
-		}
-		this.environmentMap.updateMaterials()
-
-		this.currentEnv = 'desert'
-	}
+	// setAmbientLight() {
+	// 	this.ambientLight = new THREE.AmbientLight(0x2424f9, 0.8)
+	// 	this.scene.add(this.ambientLight)
+	// }
 
 	setEnvMap2() {
 		this.envMap2 = {}

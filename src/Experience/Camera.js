@@ -36,7 +36,7 @@ export default class Camera {
 			60,
 			this.sizes.width / this.sizes.height,
 			0.1,
-			1500
+			100
 		)
 
 		// sets player start

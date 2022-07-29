@@ -48,6 +48,7 @@ export default class Resources extends EventEmitter {
 					this.loadingBarElement.classList.add('ended')
 					this.loadingBarText.classList.add('ended')
 					this.loadingBarElement.style.transform = ''
+					this.playButton.classList.remove('hide')
 				}, 500)
 			},
 			// activate during progression

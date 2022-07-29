@@ -31,14 +31,14 @@ export default class Plane {
 
 	setPlane() {
 		// this.geometry = new THREE.PlaneGeometry(100, 100, 32, 32)
-		this.geometry = new THREE.CircleGeometry(1.9, 20)
+		this.geometry = new THREE.CircleGeometry(0.5, 20)
 
 		this.material = new THREE.ShaderMaterial({
 			vertexShader: Vertex,
 			fragmentShader: Fragment,
 			uniforms: {
 				uTime: { value: 0 },
-				uAlpha: { value: 0.32 },
+				uAlpha: { value: 0.84 },
 				uRedVal: { value: this.r },
 				uGreenVal: { value: this.g },
 				uBlueVal: { value: this.b },

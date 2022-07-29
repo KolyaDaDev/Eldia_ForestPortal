@@ -1,38 +1,22 @@
 export default [
 	{
-		name: 'environmentMapTexture',
-		type: 'cubeTexture',
-		path: [
-			'textures/environmentMap/px.png',
-			'textures/environmentMap/nx.png',
-			'textures/environmentMap/py.png',
-			'textures/environmentMap/ny.png',
-			'textures/environmentMap/pz.png',
-			'textures/environmentMap/nz.png',
-		],
-	},
-	{
 		name: 'envMap2Texture',
 		type: 'cubeTexture',
 		path: [
-			'textures/envMap2/px.jpg',
-			'textures/envMap2/nx.jpg',
-			'textures/envMap2/py.jpg',
-			'textures/envMap2/ny.jpg',
-			'textures/envMap2/pz.jpg',
-			'textures/envMap2/nz.jpg',
+			'textures/envMap/px.png',
+			'textures/envMap/nx.png',
+			'textures/envMap/py.png',
+			'textures/envMap/ny.png',
+			'textures/envMap/pz.png',
+			'textures/envMap/nz.png',
 		],
 	},
+
 	// {
-	// 	name: 'forestMerged',
-	// 	type: 'gltfModel',
-	// 	path: 'models/Landscape/forestMerged.glb',
+	// 	name: 'bakedTexture',
+	// 	type: 'texture',
+	// 	path: 'models/nikoForest/baked.jpg',
 	// },
-	{
-		name: 'bakedTexture',
-		type: 'texture',
-		path: 'models/nikoForest/baked.jpg',
-	},
 
 	{
 		name: 'spaceTexture',
@@ -45,24 +29,45 @@ export default [
 		path: 'textures/eldia/eldia.jpg',
 	},
 	{
-		name: 'fullFatTexture',
+		name: 'rmjTexture',
 		type: 'texture',
-		path: 'textures/fullFat/fullFat.png',
+		path: 'textures/rmj/rmjTexture.jpg',
 	},
-	{
-		name: 'skillsTexture',
-		type: 'texture',
-		path: 'textures/skills/skills.png',
-	},
+	// {
+	// 	name: 'stp',
+	// 	type: 'texture',
+	// 	path: 'textures/stp/stp.png',
+	// },
 
 	// models
 
 	{
-		name: 'forestOfNiko',
+		name: 'modelForBake',
 		type: 'gltfModel',
-		path: 'models/nikoForest/forestOfNikoFinalMerge.glb',
+		path: 'models/nikoForest/modelForBake.glb',
 	},
 
+	{
+		name: 'modelForMaterial',
+		type: 'gltfModel',
+		path: 'models/nikoForest/modelForMaterial.glb',
+	},
+
+	// {
+	// 	name: 'logs',
+	// 	type: 'gltfModel',
+	// 	path: 'models/nikoForest/logs.glb',
+	// },
+	{
+		name: 'arrows',
+		type: 'gltfModel',
+		path: 'models/nikoForest/arrows.glb',
+	},
+	{
+		name: 'signs',
+		type: 'gltfModel',
+		path: 'models/nikoForest/signs.glb',
+	},
 	// character
 	{
 		name: 'Vanguard',

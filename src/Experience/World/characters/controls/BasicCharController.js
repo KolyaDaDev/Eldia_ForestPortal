@@ -3,7 +3,7 @@ import BasicCharacterControllerInput from './BasicCharControllerInput.js'
 import BasicCharControlProxy from './BasicCharControlProxy'
 import CharacterFSM from './CharacterFSM.js'
 import Experience from '../../../Experience'
-import Physics from '../../physics/Physics'
+// import Physics from '../../physics/Physics'
 
 export default class BasicCharController {
 	constructor(params) {
@@ -21,7 +21,7 @@ export default class BasicCharController {
 		this.teleportInProgress = false
 
 		// char physics
-		this.physicsWorld = new Physics()
+		// this.physicsWorld = new Physics()
 
 		this._Init(params)
 	}
@@ -29,7 +29,7 @@ export default class BasicCharController {
 	_Init(params) {
 		this._params = params
 		this._decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0)
-		this._acceleration = new THREE.Vector3(1, 0.25, 15.0)
+		this._acceleration = new THREE.Vector3(1, 0.25, 5.0)
 		this._velocity = new THREE.Vector3(0, 0, 0)
 		this._position = new THREE.Vector3()
 
@@ -42,7 +42,7 @@ export default class BasicCharController {
 	}
 
 	_LoadModels() {
-		this.vanguard.scale.setScalar(0.1)
+		this.vanguard.scale.setScalar(0.05)
 		this.vanguard.traverse((c) => {
 			c.castShadow = true
 		})
@@ -130,22 +130,22 @@ export default class BasicCharController {
 		// 	value: 1,
 		// })
 		setTimeout(() => {
-			window.open('https://peaceful-inlet-40638.herokuapp.com/', '_self')
+			window.open('https://questofkolya.herokuapp.com', '_self')
 		}, 2000)
 	}
 	teleportToSkills() {
 		console.log('teleported!')
-		window.open('https://www.linkedin.com/in/nick-gillham-3bb6971a1/', '_self')
+		window.open('https://staythepath.herokuapp.com', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToRandom() {
 		console.log('teleported!')
-		window.open('https://twitter.com/kolyathedev', '_self')
+		window.open('https://www.instagram.com/kolyathedev/', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToFullFat() {
 		console.log('teleported!')
-		window.open('https://fullfatgrappling.netlify.app', '_self')
+		window.open('https://roastmyjutsu.herokuapp.com/', '_self')
 		this.teleportInProgress = true
 	}
 	teleportToSpace() {
@@ -281,7 +281,7 @@ export default class BasicCharController {
 			this.teleportToRandom()
 		}
 
-		this.physicsWorld.update(this._position)
+		// this.physicsWorld.update(this._position)
 
 		if (this._mixer) {
 			this._mixer.update(timeInSeconds)
